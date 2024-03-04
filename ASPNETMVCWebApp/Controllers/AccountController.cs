@@ -23,8 +23,6 @@ public class AccountController : Controller
     }
 
 
-
-
     [HttpPost]
     [Route("/signup")]
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
@@ -54,5 +52,20 @@ public class AccountController : Controller
             }
         }
         return View(viewModel);
+    }
+
+
+    [HttpGet]
+    [Route("/signin")]
+    public IActionResult SignIn()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [Route("/signin")]
+    public async Task<IActionResult> SignIn()
+    {
+        return View();
     }
 }

@@ -1,0 +1,72 @@
+.signup {
+    margin-top: 100px;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 60%;
+
+        @include lg {
+            width: 60%;
+        }
+
+        @include xl {
+            width: 40%;
+        }
+
+        form {
+            align-items: center;
+
+            .form-content {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "btn-submit";
+
+                @include xl {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "firstname lastname" "email email" "password confirm" "terms terms" "btn-submit btn-submit";
+                    gap: 20px;
+                }
+
+                #firstname {
+                    grid-area: firstname;
+                }
+
+                #lastname {
+                    grid-area: lastname;
+                }
+
+                #email {
+                    grid-area: email;
+                }
+
+                #password {
+                    grid-area: password;
+                }
+
+                #confirm {
+                    grid-area: confirm;
+                }
+
+                #terms {
+                    grid-area: terms;
+                }
+
+                #btn-submit {
+                    grid-area: btn-submit;
+                }
+            }
+
+
+            .input-group {
+                margin-bottom: 1rem;
+            }
+
+            .checkbox-group {
+                margin-top: 1rem;
+            }
+        }
+    }
+}

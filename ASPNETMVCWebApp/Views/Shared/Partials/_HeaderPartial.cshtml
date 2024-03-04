@@ -1,0 +1,56 @@
+﻿<header>
+    <div class="container">
+        <a id="logo" asp-controller="Default" asp-action="Home">
+            <img src="~/images/silicon-logo-light.svg" alt="Silicon logotype">
+        </a>
+
+        <div id="menu">
+            <nav>
+                <a class="menu-link" asp-controller="Default" asp-action="Home" asp-fragment="overview">Overview</a>
+                <a class="menu-link" asp-controller="Default" asp-action="Home" asp-fragment="features">Features</a>
+                <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+                <a class="menu-link" asp-controller="Courses" asp-action="Index">Courses</a>
+            </nav>
+        </div>
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" />
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+
+        <div class="account-buttons">
+            <a class="btn-gray" asp-controller="Account" asp-action="SignIn"><i class="fa-regular fa-right-to-bracket"></i><span>Sign In</span></a>
+            <a class="btn-theme" asp-controller="Account" asp-action="SignUp"><i class="fa-regular fa-user"></i><span>Sign Up</span></a>
+        </div>
+
+        <div class="btn-mobile">
+            <button class="btn" id="mobile-menu-btn" aria-controls="mobile-menu"></button>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+
+
+    <div id="mobile-menu" class="open" aria-expanded="false">
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" />
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+        <div class="account-buttons">
+            <a class="btn-gray" asp-controller="Account" asp-action="SignIn"><i class="fa-regular fa-right-to-bracket"></i><span>Sign In</span></a>
+            <a class="btn-theme" asp-controller="Account" asp-action="SignUp"><i class="fa-regular fa-user"></i><span>Sign Up</span></a>
+        </div>
+        <nav>
+            <a class="menu-link" asp-controller="Default" asp-action="Home" asp-fragment="overview">Overview</a>
+            <a class="menu-link" asp-controller="Default" asp-action="Home" asp-fragment="features">Features</a>
+            <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+            <a class="menu-link" asp-controller="Courses" asp-action="Index">Courses</a>
+        </nav>
+    </div>
+</header>

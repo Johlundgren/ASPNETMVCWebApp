@@ -1,24 +1,24 @@
 ﻿using ASPNETMVCWebApp.ViewModels;
 using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASPNETMVCWebApp.Controllers;
 
-public class AccountController : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
 {
-    private readonly UserManager<UserEntity> _userManager;
-
-    public AccountController(UserManager<UserEntity> userManager)
-    {
-        _userManager = userManager;
-    }
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
 
     [HttpGet]
     [Route("/signup")]
     public IActionResult SignUp()
     {
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Details", "Account");
+
         return View();
     }
 
@@ -59,13 +59,34 @@ public class AccountController : Controller
     [Route("/signin")]
     public IActionResult SignIn()
     {
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Details", "Account");
+
         return View();
     }
 
     [HttpPost]
     [Route("/signin")]
-    public async Task<IActionResult> SignIn()
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
-        return View();
+        if (ModelState.IsValid)
+        {
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Details", "Account");
+            }
+        }
+        ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+        ViewData["ErrorMessage"] = "Incorrect email or password";
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    [Route("/signout")]
+    public new async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Home", "Default");
     }
 }

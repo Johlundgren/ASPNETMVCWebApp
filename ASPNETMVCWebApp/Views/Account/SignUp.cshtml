@@ -6,6 +6,14 @@
 
 <section class="signup">
     <div class="container">
+
+        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="alert">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+
         <form method="post" asp-action="SignUp" asp-controller="Account" novalidate>
             <h1>Create Account</h1>
             <p>Already have an account? <a asp-action="SignIn" asp-controller="Account">Sign in here</a>.</p>

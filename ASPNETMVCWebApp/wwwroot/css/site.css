@@ -456,6 +456,14 @@ form span.field-validation-error {
   color: #EF4444;
 }
 
+.alert {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #F5D7DA;
+  border: solid red 1px;
+}
+
 header {
   padding: 15px 0;
   position: relative;
@@ -659,4 +667,64 @@ footer .container .social-media i {
 }
 .signup .container form .checkbox-group {
   margin-top: 1rem;
+}
+
+.signin {
+  margin-top: 100px;
+}
+.signin .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 60%;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .signin .container {
+    width: 40%;
+  }
+}
+@media (min-width: 1200px) {
+  .signin .container {
+    width: 40%;
+  }
+}
+.signin .container form {
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .signin .container form {
+    width: 80%;
+  }
+}
+@media (min-width: 1200px) {
+  .signin .container form {
+    width: 60%;
+  }
+}
+.signin .container form .form-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "email" "password" "confirm" "remember" "btn-submit";
+}
+.signin .container form .form-content #email {
+  grid-area: email;
+}
+.signin .container form .form-content #password {
+  grid-area: password;
+}
+.signin .container form .form-content #rememberMe {
+  grid-area: remember;
+}
+.signin .container form .form-content #btn-submit {
+  grid-area: btn-submit;
+}
+.signin .container form .input-group {
+  margin-bottom: 1rem;
+}
+.signin .container form .checkbox-group {
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
 }

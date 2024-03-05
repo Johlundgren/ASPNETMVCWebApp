@@ -89,4 +89,32 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         await _signInManager.SignOutAsync();
         return RedirectToAction("Home", "Default");
     }
+
+    [HttpGet]
+    [Route("/account/details")]
+    public async Task<IActionResult> Details()
+    {
+        if (!_signInManager.IsSignedIn(User))
+            return RedirectToAction("SignIn", "Account");
+
+        var userEntity = await _userManager.GetUserAsync(User);
+
+        var viewModel = new AccountDetailsViewModel()
+        {
+            User = userEntity!
+        };
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> BasicInfo(AccountDetailsViewModel viewModel)
+    {
+        var result = await _userManager.UpdateAsync(viewModel.User);
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError("Failed To Save Data", "Unable to save the data");
+            ViewData["ErrorMessage"] = "Unable to save the data";
+        }
+        return RedirectToAction("Details", "Account", viewModel);
+    }
 }

@@ -1,14 +1,14 @@
 ﻿@model AccountDetailsViewModel
 @{
-    ViewData["Title"] = $"{Model.User.FirstName} {Model.User.LastName}";
+    ViewData["Title"] = $"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}";
 }
 <div class="container">
     <section id="account-details">
         <aside>
             <div class="profile-info">
-@*                 <img src="@Model.User.ProfileImage" alt="@($"{Model.User.FirstName} {Model.User.LastName}")" /> *@
-                <h5>@($"{Model.User.FirstName} {Model.User.LastName}")</h5>
-                <p>@Model.User.Email</p>
+                <img src="~/images/@Model.ProfileInfo.ProfileImageUrl" alt="" />
+                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                <p>@Model.ProfileInfo.Email</p>
             </div>
 
             <nav>
@@ -19,39 +19,39 @@
 
         <div class="details">
             <section class="basic-info">
-                <form method="post" asp-controller="Account" asp-action="BasicInfo" novalidate>
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
                     <h2>Account Details</h2>
                     <h5>Basic Info</h5>
 
                     <div class="form-content">
                         <div id="firstname" class="input-group">
-                            <label asp-for=User.FirstName></label>
-                            <input asp-for="User.FirstName" />
-                            <span asp-validation-for="User.FirstName"></span>
+                            <label asp-for=BasicInfo.FirstName></label>
+                            <input asp-for="BasicInfo.FirstName" />
+                            <span asp-validation-for="BasicInfo.FirstName"></span>
                         </div>
 
                         <div id="lastname" class="input-group">
-                            <label asp-for=User.LastName></label>
-                            <input asp-for="User.LastName" />
-                            <span asp-validation-for="User.LastName"></span>
+                            <label asp-for=BasicInfo.LastName></label>
+                            <input asp-for="BasicInfo.LastName" />
+                            <span asp-validation-for="BasicInfo.LastName"></span>
                         </div>
 
                         <div id="email" class="input-group">
-                            <label asp-for=User.Email></label>
-                            <input asp-for="User.Email" />
-                            <span asp-validation-for="User.Email"></span>
+                            <label asp-for=BasicInfo.Email></label>
+                            <input asp-for="BasicInfo.Email" />
+                            <span asp-validation-for="BasicInfo.Email"></span>
                         </div>
 
-@*                         <div id="phone" class="input-group">
-                            <label asp-for=User.Phone></label>
-                            <input asp-for="User.Phone" />
-                            <span asp-validation-for="User.Phone"></span>
+                        <div id="phone" class="input-group">
+                            <label asp-for=BasicInfo.Phone></label>
+                            <input asp-for="BasicInfo.Phone" />
+                            <span asp-validation-for="BasicInfo.Phone"></span>
                         </div>
 
                         <div id="bio" class="input-group">
-                            <label asp-for=BasicInfo.Biography>Bio <span>(optional)</span></label>
-                            <textarea asp-for="BasicInfo.Biography"></textarea>
-                        </div> *@
+                            <label asp-for=BasicInfo.Bio>Bio <span>(optional)</span></label>
+                            <textarea asp-for="BasicInfo.Bio"></textarea>
+                        </div>
 
                         <div class="btn-submit">
                             <button class="btn-gray" type="reset">Cancel</button>
@@ -62,21 +62,21 @@
                 </form>
             </section>
             <hr />
-@*             <section class="address-info">
-                <form method="post" asp-controller="Account" asp-action="AddressInfo">
+            <section class="address-info">
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
                     <h5>Address</h5>
 
                     <div class="content">
                         <div id="form-addressline-1" class="input-group">
-                            <label asp-for="AddressInfo.Addressline_1"></label>
-                            <span asp-validation-for="AddressInfo.Addressline_1"></span>
-                            <input asp-for="AddressInfo.Addressline_1" />
+                            <label asp-for="AddressInfo.AddressLine_1"></label>
+                            <span asp-validation-for="AddressInfo.AddressLine_1"></span>
+                            <input asp-for="AddressInfo.AddressLine_1" />
                         </div>
 
                         <div id="form-addressline-2" class="input-group">
-                            <label asp-for="AddressInfo.Addressline_2">Address line 2 <span>(optional)</span></label>
-                            <span asp-validation-for="AddressInfo.Addressline_2"></span>
-                            <input asp-for="AddressInfo.Addressline_2" />
+                            <label asp-for="AddressInfo.AddressLine_2">Address line 2 <span>(optional)</span></label>
+                            <span asp-validation-for="AddressInfo.AddressLine_2"></span>
+                            <input asp-for="AddressInfo.AddressLine_2" />
                         </div>
 
                         <div id="form-postalcode" class="input-group">
@@ -101,5 +101,5 @@
             </section>
         </div>
 
-    </section> *@
+    </section>
 </div>

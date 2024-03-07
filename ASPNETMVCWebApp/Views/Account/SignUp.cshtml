@@ -50,11 +50,13 @@
                         <label asp-for="TermsAndConditions">
                             I accept the <a asp-action="TermsAndConditions" asp-controller="About">Terms & Conditions</a>.
                         </label>
+                        <span asp-validation-for="TermsAndConditions"></span>
                     </div>
-                    <span asp-validation-for="TermsAndConditions"></span>
                  </div>
                  <button id="btn-submit" type="submit" class="btn-theme-s">Sign Up</button>
             </div>
         </form>
     </div>
 </section>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

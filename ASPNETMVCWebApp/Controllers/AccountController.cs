@@ -243,61 +243,24 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         if (user != null)
         {
             var address = await _addressManager.GetAddressAsync(user.Id);
-            return new AddressInfoViewModel
+            if (address != null)
             {
-                AddressLine_1 = address.AddressLine_1,
-                AddressLine_2 = address.AddressLine_2,
-                PostalCode = address.PostalCode,
-                City = address.City
-            };
+                return new AddressInfoViewModel
+                {
+                    AddressLine_1 = address.AddressLine_1,
+                    AddressLine_2 = address.AddressLine_2,
+                    PostalCode = address.PostalCode,
+                    City = address.City
+                };
+            }
         }
 
-        return new AddressInfoViewModel();
+        return new AddressInfoViewModel
+        {
+            AddressLine_1 = "",
+            AddressLine_2 = "",
+            PostalCode = "",
+            City = ""
+        };
     }
 }
-
-//        var result = await _userManager.UpdateAsync(viewModel.User);
-//        if (!result.Succeeded)
-//        {
-//            ModelState.AddModelError("Failed To Save Data", "Unable to save the data");
-//            ViewData["ErrorMessage"] = "Unable to save the data";
-//        }
-//        return RedirectToAction("Details", "Account", viewModel);
-
-
-//[HttpPost]
-//public async Task<IActionResult> BasicInfo(AccountDetailsViewModel viewModel)
-//{
-//    var result = await _accountService.UpdateUserAccountAsync(viewModel.User);
-//    if (!result.Succeeded)
-//    {
-//        ModelState.AddModelError("Failed To Save Data", "Unable to save the data");
-//        ViewData["ErrorMessage"] = "Unable to save the data";
-//    }
-//    return RedirectToAction("Details", "Account", new { id = viewModel.User.Id});
-//}
-//#region SaveBasicInfo
-//[HttpPost]
-//public IActionResult SaveBasicInfo(AccountDetailsViewModel viewModel)
-//{
-//    if (TryValidateModel(viewModel.BasicInfo))
-//    {
-//        return RedirectToAction("Home", "Default");
-//    }
-
-//    return View("Details", viewModel);
-//}
-//#endregion
-
-//#region SaveAddressInfo
-//[HttpPost]
-//public IActionResult SaveAddressInfo(AccountDetailsViewModel viewModel)
-//{
-//    if (TryValidateModel(viewModel.AddressInfo))
-//    {
-//        return RedirectToAction("Home", "Default");
-//    }
-
-//    return View("Details", viewModel);
-//}
-//#endregion

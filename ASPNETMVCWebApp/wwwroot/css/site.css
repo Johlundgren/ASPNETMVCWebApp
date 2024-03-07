@@ -1,4 +1,5 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
   line-height: 160%;
   font-weight: 400;
@@ -454,6 +455,15 @@ form span.field-validation-error {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   color: #EF4444;
+}
+form span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: 45px;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
 }
 
 .alert {

@@ -104,6 +104,16 @@ form {
             @include text-s;
             color: $danger;
 
+            &::after {
+                position: absolute;
+                right: 10px;
+                top: 45px;
+                z-index: 10;
+                font-size: 2em;
+                display: block;
+                content: '\2BBF';
+            }
+
         }
     }
 }

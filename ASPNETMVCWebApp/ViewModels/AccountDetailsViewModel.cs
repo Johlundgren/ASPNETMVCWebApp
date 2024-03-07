@@ -5,8 +5,8 @@ namespace ASPNETMVCWebApp.ViewModels;
 
 public class AccountDetailsViewModel
 {
-    public ProfileInfoViewModel ProfileInfo { get; set; } = null!;
-    public BasicInfoViewModel BasicInfo { get; set; } = null!;
-    public AddressInfoViewModel AddressInfo { get; set; } = null!;
-    public UserEntity User { get; set; } = null!;
+    public ProfileInfoViewModel? ProfileInfo { get; set; }
+    public BasicInfoViewModel? BasicInfo { get; set; }
+    public AddressInfoViewModel? AddressInfo { get; set; }
+    //public UserEntity User { get; set; } = null!;
 }

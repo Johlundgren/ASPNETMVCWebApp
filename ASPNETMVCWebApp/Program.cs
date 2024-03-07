@@ -16,8 +16,9 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.SignIn.RequireConfirmedAccount = false;
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<AppDbContext>();
-//NY INFO
-builder.Services.AddScoped<AccountService>();
+
+
+builder.Services.AddScoped<AddressManager>();
 
 
 

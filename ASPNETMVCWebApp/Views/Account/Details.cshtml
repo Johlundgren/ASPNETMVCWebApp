@@ -4,6 +4,14 @@
 }
 <div class="container">
     <section id="account-details">
+
+        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="alert">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+
         <aside>
             <div class="profile-info">
                 <img src="~/images/@Model.ProfileInfo.ProfileImageUrl" alt="" />

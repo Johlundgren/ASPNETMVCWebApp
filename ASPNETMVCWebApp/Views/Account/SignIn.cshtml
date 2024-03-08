@@ -14,7 +14,7 @@
             </div>
         }
 
-        <form method="post" asp-action="SignIn" asp-controller="Account" novalidate>
+        <form method="post" asp-action="SignIn" asp-controller="Account" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
             <h1>Welcome Back</h1>
             <p>Dont't have an account yet? <a asp-action="SignUp" asp-controller="Account">Sign up here</a>.</p>
 

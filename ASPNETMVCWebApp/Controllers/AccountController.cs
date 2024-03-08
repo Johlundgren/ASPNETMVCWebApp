@@ -15,7 +15,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
-
+    #region Auth
     #region HttpGet signup
     [HttpGet]
     [Route("/signup")]
@@ -23,6 +23,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     {
         if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
+
 
         return View();
     }
@@ -66,26 +67,30 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     #region HttpGetSignIn
     [HttpGet]
     [Route("/signin")]
-    public IActionResult SignIn()
+    public IActionResult SignIn(string returnUrl)
     {
         if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
 
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
         return View();
     }
     #endregion
 
 
-    #region PostSignIn
+    #region HttpPostSignIn
     [HttpPost]
     [Route("/signin")]
-    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
             if (result.Succeeded)
             {
+                if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+
                 return RedirectToAction("Details", "Account");
             }
         }
@@ -104,15 +109,17 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         return RedirectToAction("Home", "Default");
     }
     #endregion
+    #endregion
 
 
+    [Authorize]
     #region DetailsGet
     [HttpGet]
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
-        if (!_signInManager.IsSignedIn(User))
-            return RedirectToAction("SignIn", "Account");
+        //if (!_signInManager.IsSignedIn(User))
+        //    return RedirectToAction("SignIn", "Account");
 
         var viewModel = new AccountDetailsViewModel
         {
@@ -126,6 +133,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
+    [Authorize]
     #region DetailsPost
     [HttpPost]
     [Route("/account/details")]
@@ -209,6 +217,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
+    [Authorize]
     private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);
@@ -221,7 +230,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         };
     }
 
-
+    [Authorize]
     private async Task<BasicInfoViewModel> PopulateBasicInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);
@@ -237,6 +246,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         };
     }
 
+    [Authorize]
     private async Task<AddressInfoViewModel> PopulateAddressInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);

@@ -8,5 +8,4 @@ public class AccountDetailsViewModel
     public ProfileInfoViewModel? ProfileInfo { get; set; }
     public BasicInfoViewModel? BasicInfo { get; set; }
     public AddressInfoViewModel? AddressInfo { get; set; }
-    //public UserEntity User { get; set; } = null!;
 }

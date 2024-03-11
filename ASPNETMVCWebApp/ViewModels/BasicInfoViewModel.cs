@@ -24,6 +24,7 @@ public class BasicInfoViewModel
     [Display(Name = "Email address", Prompt = "Enter your email address")]
     public string Email { get; set; } = null!;
 
+    public bool IsExternalAccount { get; set; }
 
     [DataType(DataType.PhoneNumber)]
     [Display(Name = "Phone (optional)", Prompt = "Enter your phone number")]

@@ -35,8 +35,16 @@
                         </label>
                     </div>
                 </div>
-                <button id="btn-submit" type="submit" class="btn-theme-s">Sign In</button>
+                <button class="btn-theme-s" id="btn-submit" type="submit" class="btn-theme-s">Sign In</button>
             </div>
         </form>
+        <hr />
+        <div class="external-providers">
+            <h6>Or sign in with your social account</h6>
+            <div class="providers">
+                <a class="btn-theme-s" asp-action="Google" asp-controller="Account"><i class="fa-brands fa-google"></i>Google</a>
+                <a class="btn-theme-s" asp-action="Facebook" asp-controller="Account"><i class="fa-brands fa-facebook"></i>Facebook</a>
+            </div>
+        </div>
     </div>
 </section>

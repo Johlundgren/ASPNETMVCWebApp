@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace ASPNETMVCWebApp.Controllers;
 
@@ -15,7 +16,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
-    #region Auth
+
+    #region Auth Individual
     #region HttpGet signup
     [HttpGet]
     [Route("/signup")]
@@ -88,7 +90,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
             if (result.Succeeded)
             {
-                if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return Redirect(returnUrl);
 
                 return RedirectToAction("Details", "Account");
@@ -109,6 +111,65 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         return RedirectToAction("Home", "Default");
     }
     #endregion
+
+    #region External Account Facebook
+
+    [HttpGet]
+    public IActionResult Facebook()
+    {
+        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("FacebookCallback"));
+        return new ChallengeResult("Facebook", authProps);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> FacebookCallback()
+    {
+        var info = await _signInManager.GetExternalLoginInfoAsync();
+        if (info != null)
+        {
+            var userEntity = new UserEntity
+            {
+                FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                IsExternalAccount = true
+            };
+
+            var user = await _userManager.FindByEmailAsync(userEntity.Email);
+            if (user == null)
+            {
+                var result = await _userManager.CreateAsync(userEntity);
+                if (result.Succeeded)
+                    user = await _userManager.FindByEmailAsync(userEntity.Email);
+            }
+            
+            if (user != null)
+            {
+                if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                {
+                    user.FirstName = userEntity.FirstName;
+                    user.LastName = userEntity.LastName;
+                    user.Email = userEntity.Email;
+
+                    await _userManager.UpdateAsync(user);
+                }
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                if (HttpContext.User != null)
+                    return RedirectToAction("Details", "Account");
+            }
+        }
+
+        ModelState.AddModelError("InvalidFacebookAuthentication", "danger|Failed Facebook login.");
+        ViewData["ErrorMessage"] = "danger|Failed Facebook login.";
+        return RedirectToAction("SignIn", "Account");
+    }
+
+
+    #endregion
+
     #endregion
 
 
@@ -125,6 +186,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         {
             ProfileInfo = await PopulateProfileInfoAsync()
         };
+
 
         viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
         viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
@@ -148,6 +210,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             {
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
+
                 {
                     user.FirstName = viewModel.BasicInfo.FirstName;
                     user.LastName = viewModel.BasicInfo.LastName;
@@ -242,6 +305,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             LastName = user.LastName,
             Email = user.Email!,
             Phone = user.PhoneNumber,
+            IsExternalAccount = user.IsExternalAccount,
             Bio = user.Bio
         };
     }

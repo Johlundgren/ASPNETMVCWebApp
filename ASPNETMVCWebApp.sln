@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETMVCWebApp", "ASPNETMVCWebApp\ASPNETMVCWebApp.csproj", "{1D2FFFA3-1F09-499C-A70A-CD935EFB2F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPNETMVCWebApp", "ASPNETMVCWebApp\ASPNETMVCWebApp.csproj", "{1D2FFFA3-1F09-499C-A70A-CD935EFB2F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{72070D8A-3B72-4B91-8982-0535E05DFA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{72070D8A-3B72-4B91-8982-0535E05DFA75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

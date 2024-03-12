@@ -1,3 +1,5 @@
-﻿@{
+﻿@model HomeIndexViewModel
+@{
     ViewData["Title"] = "Overview";
 }
+@await Html.PartialAsync("~/Views/Shared/Partials/_ShowcasePartial.cshtml", Model.Showcase)

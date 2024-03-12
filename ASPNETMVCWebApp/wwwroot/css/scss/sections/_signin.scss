@@ -60,5 +60,13 @@
                 justify-content: center;
             }
         }
+
+        .external-providers {
+            .providers {
+                display: flex;
+                padding-top: 1rem;
+                gap: 1rem;
+            }
+        }
     }
 }

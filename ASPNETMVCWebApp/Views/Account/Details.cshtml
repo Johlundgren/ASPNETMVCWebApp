@@ -37,7 +37,7 @@
 
                             @if (Model.BasicInfo.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo!.FirstName" disabled />
+                                <input asp-for="BasicInfo!.FirstName" readonly class="form-control-plaintext" />
                             }
                             else
                             {
@@ -51,7 +51,7 @@
 
                             @if (Model.BasicInfo.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo!.LastName" disabled />
+                                <input asp-for="BasicInfo!.LastName" readonly class="form-control-plaintext" />
                             }
                             else
                             {
@@ -65,7 +65,7 @@
 
                             @if (Model.BasicInfo.IsExternalAccount)
                             {
-                                <input asp-for="BasicInfo!.Email" disabled />
+                                <input asp-for="BasicInfo!.Email" readonly class="form-control-plaintext" />
                             }
                             else
                             {

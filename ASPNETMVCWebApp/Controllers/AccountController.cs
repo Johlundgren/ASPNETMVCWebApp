@@ -195,12 +195,13 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
-    [Authorize]
+
     #region DetailsPost
     [HttpPost]
     [Route("/account/details")]
     public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
+
         if (!_signInManager.IsSignedIn(User))
             return RedirectToAction("SignIn", "Account");
 

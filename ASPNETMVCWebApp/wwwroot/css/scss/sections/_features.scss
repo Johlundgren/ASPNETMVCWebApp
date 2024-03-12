@@ -1,0 +1,98 @@
+#features {
+    height: 110rem;
+    @include md {
+        height: 68rem;
+    }
+
+    @include lg {
+        height: 50rem;
+    }
+
+    background-color: $gray-100;
+
+    .container {
+        height: 50rem;
+
+        .feature-headline {
+            padding-top: 6rem;
+
+            h1 {
+                text-align: center;
+            }
+
+            p {
+                text-align: center;
+                color: #9397AD;
+                @include text-lg;
+            }
+        }
+
+        .box-parent {
+            @include md {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include lg {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: auto;
+            background-color: $gray-100;
+
+            .box-section {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                justify-content: center;
+                flex: 1;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+                i {
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    font-size: 4rem;
+                    color: #6366F1;
+                }
+
+                h5 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                    @include text-m;
+                    color: $gray-700;
+                }
+
+                @include lg {
+                    &:nth-child(1),
+                    &:nth-child(2) {
+                        border-right: 2px solid rgba(0, 0, 0, 0.107);
+                    }
+
+                    &:nth-child(4) {
+                        border-right: 2px solid rgba(0, 0, 0, 0.107);
+                    }
+
+                    &:nth-child(5) {
+                        border-right: 2px solid rgba(0, 0, 0, 0.107);
+                    }
+
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        border-bottom: 2px solid rgba(0, 0, 0, 0.107);
+                    }
+                }
+
+                &:hover {
+                    background-color: white;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
+}

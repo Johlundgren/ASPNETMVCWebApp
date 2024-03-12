@@ -1,0 +1,31 @@
+﻿@model SubscribeViewModel
+
+<section id="@Model.Id" class="subscribe-section">
+    <div class="container">
+        <div class="subscribe-headline">
+            <h1>@Model.Title</h1>
+            <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText">
+        </div>
+        <div class="parent-parent">
+            <div class="newsletter-headline">
+                <h5>@Model.NewsletterHeadline</h5>
+            </div>
+            <div class="parent-check-boxes">
+                @foreach (var option in Model.NewsletterOptions)
+                {
+                    <div class="check-boxes">
+                        <input type="checkbox" @(option.IsChecked ? "false" : "")>
+                        <p>@option.Text</p>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="subscribe-section-footer">
+            <input placeholder="@Model.EmailPlaceholder" type="text">
+            <a class="btn-theme-s">@Model.Button.Text</a>
+        </div>
+        <div class="terms">
+            <p>@Model.TermsText <a asp-action="Model.TermsLink.ActionName" asp-controller="Model.TermsLink.ControllerName)">terms</a> and <a asp-action="Model.PrivacyLink.ActionName", asp-controller="Model.PrivacyLink.ControllerName">privacy</a> policy</p>
+        </div>
+    </div>
+</section>

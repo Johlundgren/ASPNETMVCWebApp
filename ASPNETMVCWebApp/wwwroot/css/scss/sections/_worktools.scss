@@ -1,0 +1,43 @@
+.work-tools {
+    .container {
+        height: 65rem;
+
+        @include lg {
+            height: 40rem;
+        }
+
+        .work-tools-headline {
+            margin-top: 3rem;
+            text-align: center;
+
+            p {
+                margin-top: 1.5rem;
+                @include text-lg;
+                color: $gray-600;
+            }
+        }
+
+        .box-parent {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 3.5rem;
+            gap: 2rem;
+
+            @include lg {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .box-section {
+
+                img {
+                    margin-bottom: 1rem;
+                }
+
+                p {
+                    @include text-m;
+                    color: $gray-700;
+                }
+            }
+        }
+    }
+}

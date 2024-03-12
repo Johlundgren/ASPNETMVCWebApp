@@ -1,0 +1,47 @@
+.manage-work {
+    .container {
+        display: flex;
+        align-items: center;
+        height: 55rem;
+
+        @include lg {
+            height: 50rem;
+        }
+
+        .image-container {
+            margin-right: 2rem;
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            a {
+                width: 100%;
+
+                @include lg {
+                    width: 45%;
+                }
+            }
+
+            .text-icon-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.5rem;
+
+                i {
+                    margin-bottom: 1rem;
+                    margin-right: 0.5rem;
+                    font-size: 20px;
+                    color: #6366F1;
+                }
+            }
+        }
+    }
+}

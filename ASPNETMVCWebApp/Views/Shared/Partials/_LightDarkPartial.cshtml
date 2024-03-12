@@ -1,0 +1,19 @@
+﻿@model LightDarkViewModel
+
+<section id="@Model.Id" class="light-dark">
+    <div class="background-parent">
+        <div class="black-background">
+            <h1 id="white-text-color">@Model.WhiteText</h1>
+        </div>
+        <div class="white-background">
+            <h1 id="black-text-color">@Model.BlackText</h1>
+        </div>
+    </div>
+    <img class="pcpic" src="@Model.Image?.ImageUrl" alt="@Model.Image?.AltText">
+    <div class="icon-wrapper">
+        <div class="round-circle">
+            <i class="@Model.Icon?.IconName"></i>
+            <span>@Model.Icon?.IconText</span>
+        </div>
+    </div>
+</section>

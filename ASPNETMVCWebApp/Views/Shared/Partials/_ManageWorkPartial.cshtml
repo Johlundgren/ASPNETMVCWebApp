@@ -1,0 +1,20 @@
+﻿@model ManageWorkViewModel
+
+<section id="@Model.Id" class="manage-work">
+    <div class="container">
+        <div class="image-container">
+            <img src="@Model.Image?.ImageUrl" alt="@Model.Image?.AltText">
+        </div>
+        <div class="text-container">
+            <h2>@Model.Title</h2>
+            @foreach (var item in Model.Icon)
+            {
+                <div class="text-icon-item">
+                    <i class="@item.Icon?.IconName"></i>
+                    <p>@item.Icon?.IconText</p>
+                </div>
+            }
+            <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link?.Text<i class="@Model.Link?.IconName"></i></a>
+        </div>
+    </div>
+</section>

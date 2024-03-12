@@ -1,0 +1,48 @@
+.app-devices {
+    background-color: #F3F6FF;
+    height: 50rem;
+
+    .container {
+        display: flex;
+
+        .text-container {
+            @include lg {
+                width: 50%;
+            }
+
+            width: 100%;
+            padding: 2rem;
+            margin-top: 6rem;
+
+            .text-container2 {
+                p {
+                    color: #9397AD;
+                }
+
+                i {
+                    color: #FFBA08;
+                }
+            }
+
+            .text-container3 {
+                display: flex;
+                align-items: flex-start;
+
+                .img-container {
+                    margin-left: 5rem;
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+
+        .image-container {
+            width: 50%;
+            margin-top: 4rem;
+            display: none;
+
+            @include lg {
+                display: block;
+            }
+        }
+    }
+}

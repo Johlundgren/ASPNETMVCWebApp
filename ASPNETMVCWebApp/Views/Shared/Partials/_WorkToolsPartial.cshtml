@@ -1,0 +1,19 @@
+﻿@model WorkToolsViewModel
+
+<section id="@Model.Id" class="work-tools">
+    <div class="container">
+        <div class="work-tools-headline">
+            <h1>@Model.Title</h1>
+            <p>@Model.Description</p>
+        </div>
+        <div class="box-parent">
+            @foreach (var item in Model.ToolItems)
+            {
+                <div class="box-section">
+                    <img src="@item.Image.ImageUrl" alt="@item.Image.AltText">
+                    <p>@item.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

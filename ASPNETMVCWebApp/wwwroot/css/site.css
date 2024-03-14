@@ -282,6 +282,25 @@ a:hover {
   color: #FFFFFF;
 }
 
+.btn-gray-dark {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: rgba(74, 73, 73, 0.505);
+  color: white;
+  border: none;
+}
+.btn-gray-dark:hover {
+  text-decoration: none;
+  background: #565973;
+  color: #FFFFFF;
+}
+
 .btn-switch {
   display: flex;
   align-items: center;
@@ -589,8 +608,23 @@ footer .container .social-media {
   margin-bottom: 30px;
   text-decoration: none;
 }
+footer .container .social-media a {
+  padding: 7px;
+  background-color: #E2E5F1;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+footer .container .social-media a:hover {
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
 footer .container .social-media i {
   font-size: 2rem;
+  color: black;
+}
+.social-media a:hover footer .container .social-media i {
+  color: black;
 }
 
 .error-404 {

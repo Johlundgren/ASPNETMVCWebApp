@@ -5,7 +5,7 @@ footer {
 
     .container {
         text-align: center;
-        
+
         .social-media {
             display: flex;
             justify-content: center;
@@ -14,10 +14,26 @@ footer {
             margin-bottom: 30px;
             text-decoration: none;
 
+            a {
+                padding: 7px;
+                background-color: $gray-300;
+                border-radius: 10px;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    background-color: lighten($gray-300, 10%);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                    transform: translateY(-2px);
+                }
+            }
 
             i {
                 font-size: 2rem;
+                color: black;
 
+                .social-media a:hover & {
+                    color: darken(black, 10%);
+                }
             }
         }
     }

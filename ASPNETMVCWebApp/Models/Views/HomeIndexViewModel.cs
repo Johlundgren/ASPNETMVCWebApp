@@ -187,37 +187,5 @@ public class HomeIndexViewModel
 
     #endregion
 
-    #region Subscribe Section
-
-    public SubscribeViewModel Subscribe { get; set; } = new SubscribeViewModel()
-    {
-        Title = "Don't Want To Miss Anything?",
-        Image = new ImageViewModel
-        {
-            ImageUrl = "images/vectorgroup.svg",
-            AltText = "Squiggly line"
-        },
-        NewsletterHeadline = "Sign up for Newsletters",
-        NewsletterOptions = new List<NewsletterOptionViewModel>
-        {
-            new NewsletterOptionViewModel { Text = "Daily Newsletter", IsChecked = false },
-            new NewsletterOptionViewModel { Text = "Advertising Updates", IsChecked = false },
-            new NewsletterOptionViewModel { Text = "Week in Review", IsChecked = false },
-            new NewsletterOptionViewModel { Text = "Event Updates", IsChecked = false },
-            new NewsletterOptionViewModel { Text = "Startups Weekly", IsChecked = false },
-            new NewsletterOptionViewModel { Text = "Podcasts", IsChecked = false },
-        },
-        EmailPlaceholder = "Your Email",
-        Button = new LinkViewModel
-        {
-            ControllerName = "Default",
-            ActionName = "Subscribe",
-            Text = "Subscribe *"
-        },
-        TermsText = "* Yes, I agree to the terms and privacy policy",
-        TermsLink = new LinkViewModel { ControllerName = "Default", ActionName = "Terms", Text = "terms" },
-        PrivacyLink = new LinkViewModel { ControllerName = "Default", ActionName = "Privacy", Text = "privacy" }
-    };
-
-    #endregion
+    public SubscribeViewModel Subscribe { get; set; } = new SubscribeViewModel();
 }

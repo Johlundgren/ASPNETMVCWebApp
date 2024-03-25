@@ -1,0 +1,75 @@
+﻿@model SubscribeViewModel
+
+
+<section class="subscribe">
+    <div class="container">
+        <div class="title">
+            <h2>Don't Want to Miss Anything?</h2>
+            <img src="~/images/arrow.svg" alt="" />
+        </div>
+
+        <form asp-controller="Default" asp-action="Subscribe" method="post">
+            <div class="newsletter-options">
+                <h6>Sign up for Newsletter</h6>
+                <div class="options">
+                    <div class="checkbox-group">
+                        <input asp-for="DailyNewsletter" />
+                        <label asp-for="DailyNewsletter"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="AdvertisingUpdates" />
+                        <label asp-for="AdvertisingUpdates"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="WeekInReview" />
+                        <label asp-for="WeekInReview"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="EventUpdates" />
+                        <label asp-for="EventUpdates"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="StartupsWeekly" />
+                        <label asp-for="StartupsWeekly"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="Podcasts" />
+                        <label asp-for="Podcasts"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input asp-for="Email" />
+                <button type="submit">Subscribe</button>
+            </div>
+        </form>
+        <span class="information">
+            @if (ViewData["Status"]?.ToString() == "Success")
+            {
+                <span class="alert alert-success">
+                    You have been subscribed
+                </span>
+
+            }
+            else if (ViewData["Status"]?.ToString() == "AlreadyExists")
+            {
+                <span class="alert alert-warning">
+                    You have already subscribed
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unable to contact the server. Please try again later.
+                </span>
+            }
+            else
+            {
+                <span>* Yes, I agree to the terms and privacy policy</span>
+            }
+        </span>
+
+
+
+    </div>
+</section>

@@ -1,23 +1,29 @@
-﻿using ASPNETMVCWebApp.Models.Components;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ASPNETMVCWebApp.Models.Sections;
 
 public class SubscribeViewModel
 {
-    public string? Id { get; set; }
-    public string Title { get; set; } = null!;
-    public ImageViewModel? Image { get; set; }
-    public string? NewsletterHeadline { get; set; }
-    public List<NewsletterOptionViewModel>? NewsletterOptions { get; set; }
-    public string EmailPlaceholder { get; set; } = null!;
-    public LinkViewModel? Button { get; set; }
-    public string? TermsText { get; set; }
-    public LinkViewModel? TermsLink { get; set; }
-    public LinkViewModel? PrivacyLink { get; set; }
-}
+    [Required]
+    [Display(Name = "Email", Prompt = "Your Email")]
+    public string Email { get; set; } = null!;
 
-public class NewsletterOptionViewModel
-{
-    public string? Text { get; set; }
-    public bool IsChecked { get; set; }
+
+    [Display(Name = "Daily Newsletter")]
+    public bool DailyNewsletter { get; set; }
+
+    [Display(Name = "Advertising Updates")]
+    public bool AdvertisingUpdates { get; set; }
+
+    [Display(Name = "Week in Review")]
+    public bool WeekInReview { get; set; }
+
+    [Display(Name = "Event Updates")]
+    public bool EventUpdates { get; set; }
+
+    [Display(Name = "Startups Weekly")]
+    public bool StartupsWeekly { get; set; }
+
+    [Display(Name = "Podcasts")]
+    public bool Podcasts { get; set; }
 }

@@ -2,10 +2,11 @@
 @{
     ViewData["Title"] = "Overview";
 }
-@await Html.PartialAsync("~/Views/Shared/Partials/_SubscribeSection.cshtml", Model.Subscribe)
+
 @await Html.PartialAsync("~/Views/Shared/Partials/_ShowcasePartial.cshtml", Model.Showcase)
 @await Html.PartialAsync("~/Views/Shared/Partials/_FeaturesPartial.cshtml", Model.Features)
 @await Html.PartialAsync("~/Views/Shared/Partials/_LightDarkPartial.cshtml", Model.LightDark)
 @await Html.PartialAsync("~/Views/Shared/Partials/_ManageWorkPartial.cshtml", Model.ManageWork)
 @await Html.PartialAsync("~/Views/Shared/Partials/_AppDevicesPartial.cshtml", Model.AppDevices)
 @await Html.PartialAsync("~/Views/Shared/Partials/_WorkToolsPartial.cshtml", Model.WorkTools)
+@await Html.PartialAsync("~/Views/Shared/Partials/_SubscribeSection.cshtml", Model.Subscribe)

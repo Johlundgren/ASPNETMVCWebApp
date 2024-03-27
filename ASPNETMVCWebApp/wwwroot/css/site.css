@@ -1235,7 +1235,7 @@ footer .container .social-media i {
 }
 
 .work-tools .container {
-  height: 65rem;
+  height: 70rem;
 }
 @media (min-width: 992px) {
   .work-tools .container {
@@ -1278,77 +1278,86 @@ footer .container .social-media i {
   color: #565973;
 }
 
-.subscribe-section {
+.subscribe {
   background-color: #F3F6FF;
   height: 45rem;
 }
 @media (min-width: 992px) {
-  .subscribe-section {
-    height: 40rem;
+  .subscribe {
+    height: 30rem;
   }
 }
-.subscribe-section .container {
+.subscribe .container {
   display: flex;
   flex-direction: column;
 }
-.subscribe-section .container .subscribe-headline {
+@media (min-width: 992px) {
+  .subscribe .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.subscribe .container .title {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
 }
-.subscribe-section .container .parent-parent {
+.subscribe .container form {
+  align-items: center;
+}
+.subscribe .container form .newsletter-options {
   display: flex;
-}
-.subscribe-section .container .parent-parent .newsletter-headline {
-  margin-top: 3rem;
-  margin-left: 10rem;
-}
-.subscribe-section .container .parent-parent .newsletter-headline h5 {
-  width: 50%;
-}
-.subscribe-section .container .parent-parent .parent-check-boxes {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 3rem;
-}
-@media (min-width: 992px) {
-  .subscribe-section .container .parent-parent .parent-check-boxes {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-.subscribe-section .container .parent-parent .parent-check-boxes .check-boxes {
-  display: flex;
-}
-.subscribe-section .container .parent-parent .parent-check-boxes .check-boxes p {
-  margin: 0.5rem;
-}
-.subscribe-section .container .subscribe-section-footer {
-  display: flex;
+  gap: 50px;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-top: 4rem;
-}
-.subscribe-section .container .subscribe-section-footer input[type=text] {
-  width: 50%;
-  border-radius: 10px;
-  border: 2px solid #E2E5F1;
-  padding: 0.5rem;
-}
-.subscribe-section .container .subscribe-section-footer a {
-  margin-left: 1rem;
-}
-.subscribe-section .container .terms {
-  margin-left: 4rem;
 }
 @media (min-width: 768px) {
-  .subscribe-section .container .terms {
-    margin-left: 6rem;
+  .subscribe .container form .newsletter-options .options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
-@media (min-width: 992px) {
-  .subscribe-section .container .terms {
+.subscribe .container form .input-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .subscribe .container form .input-group input {
+    width: 50%;
+    height: 75%;
+    margin-top: 20px;
+    margin-left: 4rem;
+  }
+}
+.subscribe .container form .input-group .btn-theme-s {
+  width: 15%;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
+  background: #6366F1;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  border-radius: 20px;
+}
+.subscribe .container form .input-group .btn-theme-s:hover {
+  box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
+  text-decoration: none;
+  background: #565973;
+  color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  .subscribe .container .information {
     margin-left: 16rem;
   }
 }

@@ -1,16 +1,16 @@
 ﻿@model SubscribeViewModel
 
 
-<section class="subscribe">
+<section id="subscribe" class="subscribe">
     <div class="container">
         <div class="title">
-            <h2>Don't Want to Miss Anything?</h2>
+            <h1>Don't Want to Miss Anything?</h1>
             <img src="~/images/arrow.svg" alt="" />
         </div>
 
         <form asp-controller="Default" asp-action="Subscribe" method="post">
             <div class="newsletter-options">
-                <h6>Sign up for Newsletter</h6>
+                <h3>Sign up for <br />Newsletter</h3>
                 <div class="options">
                     <div class="checkbox-group">
                         <input asp-for="DailyNewsletter" />
@@ -40,7 +40,7 @@
             </div>
             <div class="input-group">
                 <input asp-for="Email" />
-                <button type="submit">Subscribe</button>
+                <button class="btn-theme-s" type="submit" asp-fragment="subscribe">Subscribe</button>
             </div>
         </form>
         <span class="information">

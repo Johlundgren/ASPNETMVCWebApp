@@ -48,7 +48,7 @@ namespace ASPNETMVCWebApp.Controllers
             {
                 ViewData["Status"] = "Invalid";
             }
-            return View(viewModel);
+            return RedirectToAction("Home");
         }
 
         [Route("/error")]

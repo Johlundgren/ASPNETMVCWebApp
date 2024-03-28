@@ -28,7 +28,7 @@ namespace ASPNETMVCWebApp.Controllers
                 try
                 {
                     var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                    var response = await _httpClient.PostAsync("https://localhost:7226/api/subscribers", content);
+                    var response = await _httpClient.PostAsync("https://localhost:7226/api/subscribers?key=OWVmZmY2OTItZjZiYi00NzRlLWI1YmQtYjJkM2VjMDNkMDMz", content);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -37,6 +37,10 @@ namespace ASPNETMVCWebApp.Controllers
                     else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                     {
                         ViewData["Status"] = "Already Exists";
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        ViewData["Status"] = "Unauthorized";
                     }
                 }
                 catch

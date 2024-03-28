@@ -1361,3 +1361,85 @@ footer .container .social-media i {
     margin-left: 16rem;
   }
 }
+
+.courses .container .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (min-width: 992px) {
+  .courses .container .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.courses .container .grid .course-card {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.0588235294), 0 4px 5px rgba(0, 0, 0, 0.0470588235);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #E2E5F1;
+}
+.courses .container .grid .course-card .content {
+  padding: 1rem;
+}
+.courses .container .grid .course-card .content .divider {
+  width: 100%;
+  height: 1px;
+  background-color: #E2E5F1;
+}
+.courses .container .grid .course-card .price-flex {
+  display: flex;
+  gap: 10px;
+}
+.courses .container .grid .course-card .price-flex .discount-price {
+  color: #EF4444;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.courses .container .grid .course-card .price-flex .price {
+  color: #6366F1;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.courses .container .grid .course-card .price-flex .crossed {
+  text-decoration: line-through;
+}
+.courses .container .grid .course-card footer {
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  padding-top: 1rem;
+}
+.courses .container .grid .course-card footer, .courses .container .grid .course-card footer * {
+  display: flex;
+  align-items: center;
+}
+.courses .container .grid .course-card footer p {
+  margin: 0;
+  gap: 5px;
+  color: #9397AD;
+}
+.courses .container .grid .course-card footer div {
+  gap: 0.5rem;
+}
+.courses .container .grid .course-card .image-container img {
+  width: 100%;
+  position: relative;
+}
+.courses .container .grid .course-card .image-container .best-seller {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #22C55E;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+.courses .container .small-sliders {
+  margin: 1rem;
+}
+.courses .container .small-sliders .center-content {
+  gap: 5px;
+}
+.courses .container .small-sliders .center-content .btn-gray {
+  width: 5px;
+}

@@ -40,7 +40,7 @@
             </div>
             <div class="input-group">
                 <input asp-for="Email" />
-                <button class="btn-theme-s" type="submit" asp-fragment="subscribe">Subscribe</button>
+                <button class="btn-theme-s" type="submit">Subscribe</button>
             </div>
         </form>
         <span class="information">
@@ -61,6 +61,12 @@
             {
                 <span class="alert alert-danger">
                     Unable to contact the server. Please try again later.
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            {
+                <span class="alert alert-danger">
+                    Something went wrong. Please contact web admin.
                 </span>
             }
             else

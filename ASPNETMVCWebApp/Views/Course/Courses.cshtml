@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CourseEntity>
+@{
+    ViewData["Title"] = "Courses";
+}
+<section class="courses">
+    <div class="container">
+        <h1>Courses</h1>
+        <div class="grid">
+@foreach(var course in Model)
+{
+            <section id="@course.Id">
+                    <div class="course-card">
+
+                        <div class="image-container">
+                            @if (course.IsBestSeller)
+                            {
+                                <div class="best-seller">Best Seller</div>
+                            }
+                            <img src="@course.ImageUrl" alt="">
+                        </div>
+    
+                        <div class="content">
+                            <p class="h5">@course.Title</p>
+                            <p class="text-s">@course.Author</p>
+                            <div class="price-flex">
+                                @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                                {
+                                    <p class="discount-price">$@course.DiscountPrice</p>
+                                    <p class="original-price crossed">$@course.Price</p>
+                                }
+                                else
+                                {
+                                    <p class="price">$@course.Price</p>
+                                }
+                            </div>
+                            <div class="divider"></div>
+   
+                            <footer>
+                                <div><p class="text-s"><i class="fa-regular fa-clock"></i> @course.Hours hours</p></div>
+                                <div><p class="text-s"><i class="fa-regular fa-thumbs-up"></i> 94%(4.2k)</p></div>
+                            </footer>
+                        </div>
+                    </div>
+            </section>
+}
+        </div>
+    </div>
+</section>

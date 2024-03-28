@@ -1,0 +1,104 @@
+.courses {
+    .container {
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+
+            @include lg {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .course-card {
+                box-shadow: 0 3px 10px #0000000f, 0 4px 5px #0000000c;
+                border-radius: .5rem;
+                overflow: hidden;
+                border: 1px solid $gray-300;
+
+                .content {
+                    padding: 1rem;
+
+
+                    .divider {
+                        width: 100%;
+                        height: 1px;
+                        background-color: $gray-300;
+                    }
+                }
+
+                .price-flex {
+                    display: flex;
+                    gap: 10px;
+                    
+                    .discount-price {
+                        color: $danger;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                    }
+
+                    .price {
+                        color: $theme;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                    }
+
+                    .crossed {
+                        text-decoration: line-through;
+                    }
+                }
+
+                footer {
+                    display: flex;
+                    gap: 2rem;
+                    padding: 0;
+                    padding-top: 1rem;
+
+                    &, * {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    p {
+                        margin: 0;
+                        gap: 5px;
+                        color: $gray-600;
+                    }
+
+                    div {
+                        gap: .5rem;
+                    }
+                }
+
+                .image-container {
+                    img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                    .best-seller {
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        background-color: $success;
+                        color: white;
+                        padding: 5px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+
+        .small-sliders {
+            margin: 1rem;
+
+            .center-content {
+                gap: 5px;
+
+                .btn-gray {
+                    width: 5px;
+                }
+            }
+        }
+    }
+}

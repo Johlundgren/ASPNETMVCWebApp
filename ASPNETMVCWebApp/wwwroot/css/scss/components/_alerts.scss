@@ -6,3 +6,16 @@
     border: solid red 1px;
 
 }
+
+.custom-alert-success {
+    background-color: $success;
+    border-color: $success;
+    color: $gray-800;
+    
+}
+
+.custom-alert-warning {
+    background-color: $warning;
+    border-color: $warning;
+    color: $gray-800;
+}

@@ -493,6 +493,18 @@ form span.field-validation-error::after {
   border: solid red 1px;
 }
 
+.custom-alert-success {
+  background-color: #22C55E;
+  border-color: #22C55E;
+  color: #33354D;
+}
+
+.custom-alert-warning {
+  background-color: #FFBA08;
+  border-color: #FFBA08;
+  color: #33354D;
+}
+
 header {
   padding: 15px 0;
   position: relative;
@@ -1356,9 +1368,14 @@ footer .container .social-media i {
   background: #565973;
   color: #FFFFFF;
 }
+.subscribe .container .information {
+  margin-left: 57px;
+  margin-top: 20px;
+}
 @media (min-width: 768px) {
   .subscribe .container .information {
-    margin-left: 16rem;
+    margin-left: 15.5rem;
+    margin-top: 20px;
   }
 }
 

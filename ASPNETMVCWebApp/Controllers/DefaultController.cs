@@ -32,20 +32,20 @@ namespace ASPNETMVCWebApp.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewData["Status"] = "Success";
+                        TempData["Status"] = "Success";
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                     {
-                        ViewData["Status"] = "Already Exists";
+                        TempData["Status"] = "Already Exists";
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
-                        ViewData["Status"] = "Unauthorized";
+                        TempData["Status"] = "Unauthorized";
                     }
                 }
                 catch
                 {
-                    ViewData["Status"] = "ConnectionFailed";
+                    TempData["Status"] = "ConnectionFailed";
                 }
             }
             else

@@ -8,7 +8,7 @@
             <img src="~/images/arrow.svg" alt="" />
         </div>
 
-        <form asp-controller="Default" asp-action="Subscribe" method="post">
+        <form asp-controller="Default" asp-action="Subscribe" asp-fragment="subscribe" method="post">
             <div class="newsletter-options">
                 <h3>Sign up for <br />Newsletter</h3>
                 <div class="options">
@@ -44,26 +44,26 @@
             </div>
         </form>
         <span class="information">
-            @if (ViewData["Status"]?.ToString() == "Success")
+            @if (TempData["Status"]?.ToString() == "Success")
             {
-                <span class="alert alert-success">
+                <span class="alert custom-alert-success">
                     You have been subscribed
                 </span>
 
             }
-            else if (ViewData["Status"]?.ToString() == "AlreadyExists")
+            else if (TempData["Status"]?.ToString() == "AlreadyExists")
             {
-                <span class="alert alert-warning">
+                <span class="alert custom-alert-warning">
                     You have already subscribed
                 </span>
             }
-            else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            else if (TempData["Status"]?.ToString() == "ConnectionFailed")
             {
                 <span class="alert alert-danger">
                     Unable to contact the server. Please try again later.
                 </span>
             }
-            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            else if (TempData["Status"]?.ToString() == "Unauthorized")
             {
                 <span class="alert alert-danger">
                     Something went wrong. Please contact web admin.

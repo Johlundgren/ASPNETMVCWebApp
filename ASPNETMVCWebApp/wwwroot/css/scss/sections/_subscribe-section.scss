@@ -81,8 +81,11 @@
         }
 
         .information {
+            margin-left: 57px;
+            margin-top: 20px;
             @include md {
-                margin-left: 16rem;
+                margin-left: 15.5rem;
+                margin-top: 20px;
             }
         }
     }

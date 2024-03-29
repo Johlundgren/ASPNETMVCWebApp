@@ -10,13 +10,19 @@
 {
             <section id="@course.Id">
                     <div class="course-card">
+                        @if (course.IsBestSeller)
+                        {
+                            <div class="best-seller">Best Seller</div>
+                        }
 
+                        <div class="badge">
+                            <a asp-controller="Default" asp-action="Home"><i class="fa-light fa-bookmark"></i></a>
+                        </div>
+                        @*  <div class="badge">
+                            <a href="@Url.Action("Details", "Courses", new { id = course.Id })">Details</a>
+                            </div> *@
                         <div class="image-container">
-                            @if (course.IsBestSeller)
-                            {
-                                <div class="best-seller">Best Seller</div>
-                            }
-                            <img src="@course.ImageUrl" alt="">
+                            <img src="~/images/courseimages/@course.ImageUrl" alt="">
                         </div>
     
                         <div class="content">
@@ -37,7 +43,16 @@
    
                             <footer>
                                 <div><p class="text-s"><i class="fa-regular fa-clock"></i> @course.Hours hours</p></div>
-                                <div><p class="text-s"><i class="fa-regular fa-thumbs-up"></i> 94%(4.2k)</p></div>
+                                <div><p class="text-s"><i class="fa-regular fa-thumbs-up"></i>
+                                        @{
+                                            double likesCount = 0;
+                                            if (double.TryParse(course.LikesInNumbers, out double likesNumber))
+                                            {
+                                                likesCount = likesNumber / 1000;
+                                            }
+                                        }
+                                           @course.LikesInProcent% (@likesCount.ToString("0.0") k)
+                                    </p></div>
                             </footer>
                         </div>
                     </div>
@@ -45,4 +60,15 @@
 }
         </div>
     </div>
+    <div class="small-sliders">
+        <div class="center-content">
+            <a class="btn-gray" href=""><</a>
+            <a class="btn-gray" href="">1</a>
+            <a class="btn-gray" href="">2</a>
+            <a class="btn-gray" href="">3</a>
+            <a class="btn-gray" href="">4</a>
+            <a class="btn-gray" href="">></a>
+        </div>
+    </div>
 </section>
+@await Html.PartialAsync("~/Views/Shared/Partials/_WorkWithUsPartial.cshtml")

@@ -1390,6 +1390,7 @@ footer .container .social-media i {
   }
 }
 .courses .container .grid .course-card {
+  position: relative;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.0588235294), 0 4px 5px rgba(0, 0, 0, 0.0470588235);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -1440,23 +1441,78 @@ footer .container .social-media i {
 }
 .courses .container .grid .course-card .image-container img {
   width: 100%;
-  position: relative;
 }
-.courses .container .grid .course-card .image-container .best-seller {
+.courses .container .grid .course-card .best-seller {
   position: absolute;
   top: 10px;
   left: 10px;
   background-color: #22C55E;
   color: white;
-  padding: 5px;
+  padding: 3px;
   font-size: 12px;
+  border-radius: 5px;
 }
-.courses .container .small-sliders {
-  margin: 1rem;
+.courses .container .grid .course-card .badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
 }
-.courses .container .small-sliders .center-content {
+.courses .container .grid .course-card .badge a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.courses .small-sliders {
+  margin: 2rem;
+}
+.courses .small-sliders .center-content {
   gap: 5px;
 }
-.courses .container .small-sliders .center-content .btn-gray {
+.courses .small-sliders .center-content .btn-gray {
   width: 5px;
+}
+
+.work-with-us .container {
+  background-color: #F3F6FF;
+  display: flex;
+  margin-top: 4rem;
+}
+.work-with-us .container .text-container {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .work-with-us .container .text-container {
+    width: 50%;
+  }
+}
+.work-with-us .container .text-container .text-lead {
+  margin: 3rem;
+}
+.work-with-us .container .text-container h1 {
+  margin: 3rem;
+}
+.work-with-us .container .text-container .btn-theme-s {
+  width: 45%;
+  margin: 3rem;
+}
+@media (min-width: 992px) {
+  .work-with-us .container .text-container .btn-theme-s {
+    width: 30%;
+  }
+}
+.work-with-us .container .image-container {
+  display: none;
+  width: 50%;
+  margin-left: 10rem;
+  margin-top: 2rem;
+}
+@media (min-width: 992px) {
+  .work-with-us .container .image-container {
+    display: block;
+  }
 }

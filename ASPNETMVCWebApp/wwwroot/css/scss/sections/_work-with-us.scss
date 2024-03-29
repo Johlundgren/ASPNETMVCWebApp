@@ -1,0 +1,44 @@
+.work-with-us {
+
+    .container {
+        background-color: $gray-100;
+        display: flex;
+        margin-top: 4rem;
+
+        .text-container {
+            width: 100%;
+
+            @include lg {
+                width: 50%;
+            }
+
+            .text-lead {
+                margin: 3rem;
+            }
+
+            h1 {
+                margin: 3rem;
+            }
+
+            .btn-theme-s {
+                width: 45%;
+                margin: 3rem;
+
+                @include lg {
+                    width: 30%;
+                }
+            }
+        }
+
+        .image-container {
+            display: none;
+            width: 50%;
+            margin-left: 10rem;
+            margin-top: 2rem;
+
+            @include lg {
+                display: block;
+            }
+        }
+    }
+}

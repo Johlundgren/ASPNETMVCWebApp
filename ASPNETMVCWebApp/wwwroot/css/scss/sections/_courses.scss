@@ -11,6 +11,7 @@
             }
 
             .course-card {
+                position: relative;
                 box-shadow: 0 3px 10px #0000000f, 0 4px 5px #0000000c;
                 border-radius: .5rem;
                 overflow: hidden;
@@ -30,7 +31,7 @@
                 .price-flex {
                     display: flex;
                     gap: 10px;
-                    
+
                     .discount-price {
                         color: $danger;
                         font-size: 1.2rem;
@@ -73,31 +74,48 @@
                 .image-container {
                     img {
                         width: 100%;
-                        position: relative;
                     }
+                }
 
-                    .best-seller {
-                        position: absolute;
-                        top: 10px;
-                        left: 10px;
-                        background-color: $success;
-                        color: white;
-                        padding: 5px;
-                        font-size: 12px;
-                    }
+                .best-seller {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background-color: $success;
+                    color: white;
+                    padding: 3px;
+                    font-size: 12px;
+                    border-radius: 5px;
+                }
+
+                .badge {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    z-index: 1;
+                }
+
+                .badge a {
+                    display: inline-block;
+                    padding: 5px 10px;
+                    background-color: white;
+                    color: black;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    font-size: 17px;
                 }
             }
         }
+    }
 
-        .small-sliders {
-            margin: 1rem;
+    .small-sliders {
+        margin: 2rem;
 
-            .center-content {
-                gap: 5px;
+        .center-content {
+            gap: 5px;
 
-                .btn-gray {
-                    width: 5px;
-                }
+            .btn-gray {
+                width: 5px;
             }
         }
     }

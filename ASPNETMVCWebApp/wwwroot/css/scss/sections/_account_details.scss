@@ -84,6 +84,23 @@
                         }
                     }
 
+                    .input-group {
+                        label {
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
+
+                        input {
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
+
+                        textarea {
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
+                    }
+
                     .btn-submit {
                         grid-area: buttons;
                         margin: 20px 0;
@@ -136,6 +153,18 @@
                         margin: 20px 0;
                         display: flex;
                         gap: 20px;
+                    }
+
+                    .input-group {
+                        label {
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
+
+                        input {
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
+                        }
                     }
                 }
             }

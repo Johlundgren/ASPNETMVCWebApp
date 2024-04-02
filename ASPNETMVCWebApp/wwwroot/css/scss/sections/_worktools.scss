@@ -1,4 +1,6 @@
 .work-tools {
+    background-color: var(--color-gray-000);
+
     .container {
         height: 70rem;
 
@@ -7,13 +9,16 @@
         }
 
         .work-tools-headline {
-            margin-top: 3rem;
             text-align: center;
+
+            h1 {
+                color: var(--color-gray-900);
+            }
 
             p {
                 margin-top: 1.5rem;
                 @include text-lg;
-                color: $gray-600;
+                color: var(--color-gray-600);
             }
         }
 
@@ -28,6 +33,8 @@
             }
 
             .box-section {
+                transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+                border-radius: 10px;
 
                 img {
                     margin-bottom: 1rem;
@@ -35,7 +42,13 @@
 
                 p {
                     @include text-m;
-                    color: $gray-700;
+                    color: var(--color-gray-600);
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                    background-color: var(--color-gray-100);
                 }
             }
         }

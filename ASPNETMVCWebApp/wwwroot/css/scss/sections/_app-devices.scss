@@ -1,9 +1,11 @@
 .app-devices {
-    background-color: #F3F6FF;
-    height: 50rem;
+    background-color: var(--color-gray-100);
+    height: 45rem;
 
     .container {
         display: flex;
+        background-color: var(--color-gray-200);
+        height: 45rem;
 
         .text-container {
             @include lg {
@@ -14,9 +16,13 @@
             padding: 2rem;
             margin-top: 6rem;
 
+            h1 {
+                color: var(--color-gray-900);
+            }
+
             .text-container2 {
                 p {
-                    color: #9397AD;
+                    color: var(--color-gray-600);
                 }
 
                 i {
@@ -28,9 +34,18 @@
                 display: flex;
                 align-items: flex-start;
 
+
                 .img-container {
                     margin-left: 5rem;
                     margin-top: 0.5rem;
+                }
+
+                h4 {
+                    color: var(--color-gray-900);
+                }
+
+                p {
+                    color: var(--color-gray-600);
                 }
             }
         }

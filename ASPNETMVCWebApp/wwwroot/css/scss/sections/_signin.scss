@@ -1,5 +1,10 @@
+main {
+    background-color: var(--color-gray-000);
+}
+
 .signin {
     margin-top: 100px;
+    background-color: var(--color-gray-000);
 
     .container {
         display: flex;
@@ -28,6 +33,14 @@
                 width: 60%;
             }
 
+            h1 {
+                color: var(--color-gray-900);
+            }
+
+            p {
+                color: var(--color-gray-500);
+            }
+
             .form-content {
                 display: grid;
                 grid-template-columns: 1fr;
@@ -48,11 +61,26 @@
                 #btn-submit {
                     grid-area: btn-submit;
                 }
+
+                label {
+                    color: var(--color-gray-900);
+                }
             }
 
 
             .input-group {
                 margin-bottom: 1rem;
+                background-color: var(--color-gray-000);
+
+                label {
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+                }
+
+                input {
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+                }
             }
 
             .checkbox-group {
@@ -63,6 +91,10 @@
         }
 
         .external-providers {
+            h6 {
+                color: var(--color-gray-900);
+            }
+
             .providers {
                 display: flex;
                 padding-top: 1rem;

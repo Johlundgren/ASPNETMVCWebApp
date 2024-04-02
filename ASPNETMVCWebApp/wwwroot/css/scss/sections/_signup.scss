@@ -19,6 +19,14 @@
         form {
             align-items: center;
 
+            h1 {
+                color: var(--color-gray-900);
+            }
+
+            p {
+                color: var(--color-gray-600);
+            }
+
             .form-content {
                 display: grid;
                 grid-template-columns: 1fr;
@@ -62,6 +70,17 @@
 
             .input-group {
                 margin-bottom: 1rem;
+                color: var(--color-gray-900);
+
+                label {
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+                }
+
+                input {
+                    background-color: var(--color-gray-000);
+                    color: var(--color-gray-900);
+                }
             }
 
             .checkbox-group {

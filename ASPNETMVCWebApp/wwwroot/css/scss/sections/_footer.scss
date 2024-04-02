@@ -1,7 +1,8 @@
 footer {
+    background-color: var(--color-gray-000);
     padding: 50px 0 30px 0;
     @include text-m;
-    color: $gray-600;
+    color: var(--color-gray-500);
 
     .container {
         text-align: center;
@@ -16,12 +17,12 @@ footer {
 
             a {
                 padding: 7px;
-                background-color: $gray-300;
+                background-color: var(--color-gray-700);
                 border-radius: 10px;
                 transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
                 &:hover {
-                    background-color: lighten($gray-300, 10%);
+                    background-color: var(--color-gray-300);
                     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
                     transform: translateY(-2px);
                 }
@@ -29,7 +30,7 @@ footer {
 
             i {
                 font-size: 2rem;
-                color: black;
+                color: var(--color-gray-000);
 
                 .social-media a:hover & {
                     color: darken(black, 10%);

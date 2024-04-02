@@ -1,12 +1,13 @@
-.work-with-us {
+.workwithus {
 
     .container {
-        background-color: var(--color-gray-900);
+        background-color: var(--color-gray-000);
         display: flex;
         margin-top: 4rem;
 
         .text-container {
             width: 100%;
+
 
             @include lg {
                 width: 50%;
@@ -14,10 +15,12 @@
 
             .text-lead {
                 margin: 3rem;
+                color: var(--color-gray-700);
             }
 
             h1 {
                 margin: 3rem;
+                color: var(--color-gray-900);
             }
 
             .btn-theme-s {

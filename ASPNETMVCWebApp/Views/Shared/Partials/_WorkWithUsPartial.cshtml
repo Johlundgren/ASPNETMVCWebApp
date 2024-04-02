@@ -1,4 +1,8 @@
-﻿<section class="work-with-us">
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+<section class="workwithus">
     <div class="container">
         <div class="text-container">
             <p class="text-lead">Ready to get started?</p>
@@ -6,7 +10,7 @@
             <a class="btn-theme-s" href="">Work with us</a>
         </div>
         <div class="image-container">
-            <img src="~/images/sketchedwoman.svg" alt="Image of a sketched woman at a pc" />
+            <img src="~/images/@(isDark ? "sketchedwoman-dark.svg" : "sketchedwoman.svg")" alt="Image of a sketched woman at a pc">
         </div>
     </div>
 </section>

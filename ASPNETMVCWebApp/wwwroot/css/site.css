@@ -903,7 +903,7 @@ main {
   margin-bottom: 70px;
 }
 #account-details aside {
-  border-right: 1px solid #E2E5F1;
+  border-right: 1px solid var(--color-gray-300);
   padding-right: 20px;
 }
 #account-details aside .profile-info {
@@ -913,13 +913,15 @@ main {
 #account-details aside .profile-info h5 {
   margin-top: 15px;
   margin-bottom: 0;
+  color: var(--color-gray-900);
 }
-#account-details aside .profile-info padding {
+#account-details aside .profile-info p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+  color: var(--color-gray-600);
 }
 #account-details aside nav {
   margin-top: 50px;
@@ -942,7 +944,7 @@ main {
   padding: 1rem;
 }
 #account-details .details .basic-info form h5 {
-  color: #6366F1;
+  color: var(--color-theme);
 }
 #account-details .details .basic-info form .form-content {
   display: grid;
@@ -966,7 +968,7 @@ main {
   grid-area: bio;
 }
 #account-details .details .basic-info form .form-content #bio span {
-  color: #B4B7C9;
+  color: var(--color-gray-500);
   font-weight: 400;
 }
 #account-details .details .basic-info form .form-content .input-group label {
@@ -994,7 +996,7 @@ main {
   padding: 1rem;
 }
 #account-details .details .address-info form h5 {
-  color: #6366F1;
+  color: var(--color-theme);
 }
 #account-details .details .address-info form .content {
   display: grid;
@@ -1009,7 +1011,7 @@ main {
   grid-area: addressline_2;
 }
 #account-details .details .address-info form .content #form-addressline-2 span {
-  color: #B4B7C9;
+  color: var(--color-gray-500);
   font-weight: 400;
 }
 #account-details .details .address-info form .content #form-postalcode {
@@ -1552,7 +1554,7 @@ main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.0588235294), 0 4px 5px rgba(0, 0, 0, 0.0470588235);
   border-radius: 0.5rem;
   overflow: hidden;
-  border: 1px solid #E2E5F1;
+  border: 1px solid var(--color-gray-300);
 }
 .courses .container .grid .course-card .content {
   padding: 1rem;
@@ -1560,19 +1562,25 @@ main {
 .courses .container .grid .course-card .content .divider {
   width: 100%;
   height: 1px;
-  background-color: #E2E5F1;
+  background-color: var(--color-gray-300);
+}
+.courses .container .grid .course-card .content .h5 {
+  color: var(--color-gray-900);
+}
+.courses .container .grid .course-card .content .text-s {
+  color: var(--color-gray-600);
 }
 .courses .container .grid .course-card .price-flex {
   display: flex;
   gap: 10px;
 }
 .courses .container .grid .course-card .price-flex .discount-price {
-  color: #EF4444;
+  color: var(--color-danger-dark);
   font-size: 1.2rem;
   font-weight: 700;
 }
 .courses .container .grid .course-card .price-flex .price {
-  color: #6366F1;
+  color: var(--color-theme);
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -1592,7 +1600,7 @@ main {
 .courses .container .grid .course-card footer p {
   margin: 0;
   gap: 5px;
-  color: #9397AD;
+  color: var(--color-gray-500);
 }
 .courses .container .grid .course-card footer div {
   gap: 0.5rem;
@@ -1635,42 +1643,44 @@ main {
   width: 5px;
 }
 
-.work-with-us .container {
-  background-color: #F3F6FF;
+.workwithus .container {
+  background-color: var(--color-gray-000);
   display: flex;
   margin-top: 4rem;
 }
-.work-with-us .container .text-container {
+.workwithus .container .text-container {
   width: 100%;
 }
 @media (min-width: 992px) {
-  .work-with-us .container .text-container {
+  .workwithus .container .text-container {
     width: 50%;
   }
 }
-.work-with-us .container .text-container .text-lead {
+.workwithus .container .text-container .text-lead {
   margin: 3rem;
+  color: var(--color-gray-700);
 }
-.work-with-us .container .text-container h1 {
+.workwithus .container .text-container h1 {
   margin: 3rem;
+  color: var(--color-gray-900);
 }
-.work-with-us .container .text-container .btn-theme-s {
+.workwithus .container .text-container .btn-theme-s {
   width: 45%;
   margin: 3rem;
 }
 @media (min-width: 992px) {
-  .work-with-us .container .text-container .btn-theme-s {
+  .workwithus .container .text-container .btn-theme-s {
     width: 30%;
   }
 }
-.work-with-us .container .image-container {
+.workwithus .container .image-container {
   display: none;
   width: 50%;
   margin-left: 10rem;
   margin-top: 2rem;
 }
 @media (min-width: 992px) {
-  .work-with-us .container .image-container {
+  .workwithus .container .image-container {
     display: block;
   }
 }

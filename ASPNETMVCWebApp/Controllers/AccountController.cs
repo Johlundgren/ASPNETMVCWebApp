@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
+using System.Text;
 
 namespace ASPNETMVCWebApp.Controllers;
 
 
-public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressManager addressManager, HttpClient http, IConfiguration configuration) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
+    private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
 
     #region Auth Individual
     #region HttpGet signup
@@ -90,6 +94,22 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
             if (result.Succeeded)
             {
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _http.PostAsync($"https://localhost:7226/api/Auth/token?key={_configuration["ApiKey:Secret"]}", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var token = await response.Content.ReadAsStringAsync();
+                    var cookieOptions = new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.Now.AddDays(1)
+                    };
+
+                    Response.Cookies.Append("AccessToken", token, cookieOptions);
+                }
+
+
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return Redirect(returnUrl);
 
@@ -107,6 +127,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     [Route("/signout")]
     public new async Task<IActionResult> SignOut()
     {
+        Response.Cookies.Delete("AccessToken");
+
         await _signInManager.SignOutAsync();
         return RedirectToAction("Home", "Default");
     }
@@ -143,7 +165,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                 if (result.Succeeded)
                     user = await _userManager.FindByEmailAsync(userEntity.Email);
             }
-            
+
             if (user != null)
             {
                 if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)

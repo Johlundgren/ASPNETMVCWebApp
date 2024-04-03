@@ -17,11 +17,8 @@
                         }
 
                         <div class="badge">
-                            <a asp-controller="Default" asp-action="Home"><i class="fa-light fa-bookmark"></i></a>
+                            <a asp-controller="Course" asp-action="Details" asp-route-id="@course.Id"><i class="fa-light fa-bookmark"></i></a>
                         </div>
-                        @*  <div class="badge">
-                            <a href="@Url.Action("Details", "Courses", new { id = course.Id })">Details</a>
-                            </div> *@
                         <div class="image-container">
                             <img src="~/images/courseimages/@course.ImageUrl" alt="">
                         </div>

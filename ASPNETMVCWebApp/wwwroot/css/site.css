@@ -1539,6 +1539,48 @@ main {
   }
 }
 
+.courses .container .header {
+  display: flex;
+}
+.courses .container .header .filters {
+  display: flex;
+}
+.courses .container .header .filters .select {
+  position: relative;
+  width: 200px;
+}
+.courses .container .header .filters .select .selected, .courses .container .header .filters .select .select-options {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.courses .container .header .filters .select .selected {
+  background: #fff;
+  border-radius: 5px 5px 0 0;
+}
+.courses .container .header .filters .select .selected:after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.courses .container .header .filters .select .select-options {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border-top: none;
+  z-index: 1;
+  border-radius: 0 0 5px 5px;
+}
+.courses .container .header .filters .select .select-options .option {
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+.courses .container .header .filters .select .select-options .option:hover {
+  background-color: #f0f0f0;
+}
 .courses .container .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

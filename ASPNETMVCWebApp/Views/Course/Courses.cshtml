@@ -1,13 +1,27 @@
-﻿@model IEnumerable<CourseEntity>
+﻿@model CourseViewModel
 @{
     ViewData["Title"] = "Courses";
 }
 
 <section class="courses">
     <div class="container">
-        <h1>Courses</h1>
+        <div class="header">
+            <h1>Courses</h1>
+            <form class="filters">
+                <div class="select">
+                    <div class="selected">All categories</div>
+                    <div class="select-options">
+                        <div class="option" data-value="all">All categories</div>  
+                    </div>
+                </div>
+                <div class="input-search-group">
+                    <input id="searchQuery" name="searchQuery" placeholder="Search courses" />
+                    <i class="fa-regular fa-search"></i>
+                </div>
+            </form>
+        </div>
         <div class="grid">
-@foreach(var course in Model)
+@foreach(var course in Model.Courses)
 {
             <section id="@course.Id">
                     <div class="course-card">
@@ -60,12 +74,12 @@
     </div>
     <div class="small-sliders">
         <div class="center-content">
-            <a class="btn-gray" href=""><</a>
-            <a class="btn-gray" href="">1</a>
-            <a class="btn-gray" href="">2</a>
-            <a class="btn-gray" href="">3</a>
-            <a class="btn-gray" href="">4</a>
-            <a class="btn-gray" href="">></a>
+            <a class="btn btn-gray" href=""><</a>
+            <a class="btn btn-gray" href="">1</a>
+            <a class="btn btn-gray" href="">2</a>
+            <a class="btn btn-gray" href="">3</a>
+            <a class="btn btn-gray" href="">4</a>
+            <a class="btn btn-gray" href="">></a>
         </div>
     </div>
 </section>

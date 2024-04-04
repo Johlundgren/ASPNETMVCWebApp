@@ -1,5 +1,6 @@
-﻿using Azure;
-using Infrastructure.Entities;
+﻿using ASPNETMVCWebApp.ViewModels;
+using Azure;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ public class CourseController(HttpClient http, IConfiguration configuration) : C
 
     public async Task<IActionResult> Courses()
     {
+        var viewModel = new CourseViewModel();
 
         if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
         {
@@ -24,9 +26,14 @@ public class CourseController(HttpClient http, IConfiguration configuration) : C
             var response = await _http.GetAsync($"https://localhost:7226/api/courses?key={_configuration["ApiKey:Secret"]}");
             if (response.IsSuccessStatusCode)
             {
-                var courses = JsonConvert.DeserializeObject<IEnumerable<CourseEntity>>(await response.Content.ReadAsStringAsync());
+                viewModel = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
+                if (viewModel != null && viewModel.Succeeded)
+                { 
+                    return View(viewModel);
+                }
+                //var courses = JsonConvert.DeserializeObject<IEnumerable<CourseEntity>>(await response.Content.ReadAsStringAsync());
                
-                return View(courses);
+                //return View(courses);
             }
         }
 
@@ -42,7 +49,7 @@ public class CourseController(HttpClient http, IConfiguration configuration) : C
             var response = await _http.GetAsync($"https://localhost:7226/api/courses/{id}?key={_configuration["ApiKey:Secret"]}");
             if (response.IsSuccessStatusCode)
             {
-                var course = JsonConvert.DeserializeObject<CourseEntity>(await response.Content.ReadAsStringAsync());
+                var course = JsonConvert.DeserializeObject<Course>(await response.Content.ReadAsStringAsync());
 
                 return View(course);
             }

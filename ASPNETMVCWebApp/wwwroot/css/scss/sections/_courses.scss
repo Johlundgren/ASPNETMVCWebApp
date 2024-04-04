@@ -1,5 +1,55 @@
 .courses {
     .container {
+        .header {
+            display: flex;
+
+            .filters {
+                display: flex;
+
+                .select {
+                    position: relative;
+                    width: 200px;
+
+                    .selected, .select-options {
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        cursor: pointer;
+                    }
+
+                    .selected {
+                        background: #fff;
+                        border-radius: 5px 5px 0 0;
+
+                        &:after {
+                            content: '\25BC';
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    .select-options {
+                        display: none;
+                        position: absolute;
+                        background: #fff;
+                        border-top: none;
+                        z-index: 1;
+                        border-radius: 0 0 5px 5px;
+
+                        .option {
+                            padding: 10px;
+                            border-top: 1px solid #eee;
+
+                            &:hover {
+                                background-color: #f0f0f0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         .grid {
             display: grid;

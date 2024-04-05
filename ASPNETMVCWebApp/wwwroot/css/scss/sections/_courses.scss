@@ -2,30 +2,43 @@
     .container {
         .header {
             display: flex;
+            justify-content: space-between;
+            margin-top: 2.5rem;
+
+            h1 {
+                color: var(--color-gray-900);
+                flex: 1;
+            }
 
             .filters {
                 display: flex;
+                gap: 20px;
+                flex: 1;
 
                 .select {
                     position: relative;
                     width: 200px;
+
 
                     .selected, .select-options {
                         width: 100%;
                         padding: 10px;
                         border: 1px solid #ccc;
                         cursor: pointer;
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
                     }
 
                     .selected {
-                        background: #fff;
+                        background-color: var(--color-gray-000);
                         border-radius: 5px 5px 0 0;
 
                         &:after {
+                            background-color: var(--color-gray-000);
                             content: '\25BC';
                             position: absolute;
                             right: 10px;
-                            top: 50%;
+                            top: 25px;
                             transform: translateY(-50%);
                         }
                     }
@@ -33,19 +46,32 @@
                     .select-options {
                         display: none;
                         position: absolute;
-                        background: #fff;
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
                         border-top: none;
-                        z-index: 1;
+                        z-index: 10;
                         border-radius: 0 0 5px 5px;
+
 
                         .option {
                             padding: 10px;
                             border-top: 1px solid #eee;
 
+
                             &:hover {
-                                background-color: #f0f0f0;
+                                background-color: var(--color-theme);
                             }
                         }
+                    }
+                }
+
+                .input-search-group {
+                    color: var(--color-gray-900);
+
+                    input {
+                        padding: 10px;
+                        background-color: var(--color-gray-000);
+                        color: var(--color-gray-900);
                     }
                 }
             }

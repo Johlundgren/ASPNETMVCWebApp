@@ -1591,7 +1591,7 @@ main {
   border-top: 1px solid #eee;
 }
 .courses .container .header .filters .select .select-options .option:hover {
-  background-color: var(--color-theme);
+  background-color: var(--color-gray-200);
 }
 .courses .container .header .filters .input-search-group {
   color: var(--color-gray-900);

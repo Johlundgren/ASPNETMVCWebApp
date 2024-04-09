@@ -27,57 +27,63 @@
                 </div>
             </form>
         </div>
-        <div class="grid">
-@foreach(var course in Model.Courses)
-{
-            <section id="@course.Id">
-                    <div class="course-card">
-                        @if (course.IsBestSeller)
-                        {
-                            <div class="best-seller">Best Seller</div>
-                        }
+        @if (Model.Courses != null)
+        {
+            <div class="grid">
+                @foreach (var course in Model.Courses)
+                {
+                    <section id="@course.Id">
+                        <div class="course-card">
+                            @if (course.IsBestSeller)
+                            {
+                                <div class="best-seller">Best Seller</div>
+                            }
 
-                        <div class="badge">
-                            <a asp-controller="Course" asp-action="Details" asp-route-id="@course.Id"><i class="fa-light fa-bookmark"></i></a>
-                        </div>
-                        <div class="image-container">
-                            <img src="~/images/courseimages/@course.ImageUrl" alt="">
-                        </div>
-    
-                        <div class="content">
-                            <p class="h5">@course.Title</p>
-                            <p class="text-s">@course.Author</p>
-                            <div class="price-flex">
-                                @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
-                                {
-                                    <p class="discount-price">$@course.DiscountPrice</p>
-                                    <p class="original-price crossed">$@course.Price</p>
-                                }
-                                else
-                                {
-                                    <p class="price">$@course.Price</p>
-                                }
+                            <div class="badge">
+                                <a asp-controller="Course" asp-action="Details" asp-route-id="@course.Id"><i class="fa-light fa-bookmark"></i></a>
                             </div>
-                            <div class="divider"></div>
-   
-                            <footer>
-                                <div><p class="text-s"><i class="fa-regular fa-clock"></i> @course.Hours hours</p></div>
-                                <div><p class="text-s"><i class="fa-regular fa-thumbs-up"></i>
-                                        @{
-                                            double likesCount = 0;
-                                            if (double.TryParse(course.LikesInNumbers, out double likesNumber))
-                                            {
-                                                likesCount = likesNumber / 1000;
+                            <div class="image-container">
+                                <img src="~/images/courseimages/@course.ImageUrl" alt="">
+                            </div>
+
+                            <div class="content">
+                                <p class="h5">@course.Title</p>
+                                <p class="text-s">@course.Author</p>
+                                <div class="price-flex">
+                                    @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                                    {
+                                        <p class="discount-price">$@course.DiscountPrice</p>
+                                        <p class="original-price crossed">$@course.Price</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="price">$@course.Price</p>
+                                    }
+                                </div>
+                                <div class="divider"></div>
+
+                                <footer>
+                                    <div><p class="text-s"><i class="fa-regular fa-clock"></i> @course.Hours hours</p></div>
+                                    <div>
+                                        <p class="text-s">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                            @{
+                                                double likesCount = 0;
+                                                if (double.TryParse(course.LikesInNumbers, out double likesNumber))
+                                                {
+                                                    likesCount = likesNumber / 1000;
+                                                }
                                             }
-                                        }
-                                           @course.LikesInProcent% (@likesCount.ToString("0.0") k)
-                                    </p></div>
-                            </footer>
+                                            @course.LikesInProcent% (@likesCount.ToString("0.0") k)
+                                        </p>
+                                    </div>
+                                </footer>
+                            </div>
                         </div>
-                    </div>
-            </section>
-}
-        </div>
+                    </section>
+                }
+            </div>
+        }
     </div>
     <div class="small-sliders">
         <div class="center-content">
@@ -91,3 +97,57 @@
     </div>
 </section>
 @await Html.PartialAsync("~/Views/Shared/Partials/_WorkWithUsPartial.cshtml")
+@* <div class="grid">
+    @foreach (var course in Model.Courses)
+    {
+        <section id="@course.Id">
+            <div class="course-card">
+                @if (course.IsBestSeller)
+                {
+                    <div class="best-seller">Best Seller</div>
+                }
+
+                <div class="badge">
+                    <a asp-controller="Course" asp-action="Details" asp-route-id="@course.Id"><i class="fa-light fa-bookmark"></i></a>
+                </div>
+                <div class="image-container">
+                    <img src="~/images/courseimages/@course.ImageUrl" alt="">
+                </div>
+
+                <div class="content">
+                    <p class="h5">@course.Title</p>
+                    <p class="text-s">@course.Author</p>
+                    <div class="price-flex">
+                        @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                        {
+                            <p class="discount-price">$@course.DiscountPrice</p>
+                            <p class="original-price crossed">$@course.Price</p>
+                        }
+                        else
+                        {
+                            <p class="price">$@course.Price</p>
+                        }
+                    </div>
+                    <div class="divider"></div>
+
+                    <footer>
+                        <div><p class="text-s"><i class="fa-regular fa-clock"></i> @course.Hours hours</p></div>
+                        <div>
+                            <p class="text-s">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                @{
+                                    double likesCount = 0;
+                                    if (double.TryParse(course.LikesInNumbers, out double likesNumber))
+                                    {
+                                        likesCount = likesNumber / 1000;
+                                    }
+                                }
+                                @course.LikesInProcent% (@likesCount.ToString("0.0") k)
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+    }
+</div> *@

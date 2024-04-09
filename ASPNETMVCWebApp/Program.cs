@@ -27,8 +27,8 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;
 });
 
-//builder.Services.AddScoped<CategoryService>();
-//builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<AddressManager>();
 builder.Services.AddHttpClient();
 

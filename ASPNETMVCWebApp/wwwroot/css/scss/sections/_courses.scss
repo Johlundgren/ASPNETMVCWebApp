@@ -11,9 +11,12 @@
             }
 
             .filters {
-                display: flex;
                 gap: 20px;
+                @include md {
+                    display: flex;
+                }
                 flex: 1;
+
 
                 .select {
                     position: relative;
@@ -21,6 +24,10 @@
 
 
                     .selected, .select-options {
+                        @include lg {
+                            margin-left: 200px;
+                        }
+
                         width: 100%;
                         padding: 10px;
                         border: 1px solid #ccc;
@@ -40,6 +47,10 @@
                             right: 10px;
                             top: 25px;
                             transform: translateY(-50%);
+
+                            @include lg {
+                                right: -190px;
+                            }
                         }
                     }
 
@@ -66,12 +77,26 @@
                 }
 
                 .input-search-group {
+                    @include lg {
+                        margin-left: 200px;
+                    }
+
                     color: var(--color-gray-900);
+                    position: relative;
 
                     input {
                         padding: 10px;
+                        padding-right: 30px;
                         background-color: var(--color-gray-000);
                         color: var(--color-gray-900);
+                    }
+
+                    i {
+                        color: var(--color-gray-900);
+                        position: absolute;
+                        top: 15px;
+                        right: 10px;
+                        cursor: pointer;
                     }
                 }
             }
@@ -79,8 +104,12 @@
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 1rem;
+
+            @include md {
+                grid-template-columns: 1fr 1fr;
+            }
 
             @include lg {
                 grid-template-columns: 1fr 1fr 1fr;
@@ -190,17 +219,10 @@
                 }
             }
         }
-    }
 
-    .small-sliders {
-        margin: 2rem;
-
-        .center-content {
-            gap: 5px;
-
-            .btn-gray {
-                width: 5px;
-            }
+        .pagination {
+            margin-top: 3rem;
+            justify-content: center;
         }
     }
 }

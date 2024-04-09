@@ -1549,9 +1549,13 @@ main {
   flex: 1;
 }
 .courses .container .header .filters {
-  display: flex;
   gap: 20px;
   flex: 1;
+}
+@media (min-width: 768px) {
+  .courses .container .header .filters {
+    display: flex;
+  }
 }
 .courses .container .header .filters .select {
   position: relative;
@@ -1565,6 +1569,11 @@ main {
   background-color: var(--color-gray-000);
   color: var(--color-gray-900);
 }
+@media (min-width: 992px) {
+  .courses .container .header .filters .select .selected, .courses .container .header .filters .select .select-options {
+    margin-left: 200px;
+  }
+}
 .courses .container .header .filters .select .selected {
   background-color: var(--color-gray-000);
   border-radius: 5px 5px 0 0;
@@ -1576,6 +1585,11 @@ main {
   right: 10px;
   top: 25px;
   transform: translateY(-50%);
+}
+@media (min-width: 992px) {
+  .courses .container .header .filters .select .selected:after {
+    right: -190px;
+  }
 }
 .courses .container .header .filters .select .select-options {
   display: none;
@@ -1595,16 +1609,35 @@ main {
 }
 .courses .container .header .filters .input-search-group {
   color: var(--color-gray-900);
+  position: relative;
+}
+@media (min-width: 992px) {
+  .courses .container .header .filters .input-search-group {
+    margin-left: 200px;
+  }
 }
 .courses .container .header .filters .input-search-group input {
   padding: 10px;
+  padding-right: 30px;
   background-color: var(--color-gray-000);
   color: var(--color-gray-900);
 }
+.courses .container .header .filters .input-search-group i {
+  color: var(--color-gray-900);
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+}
 .courses .container .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+@media (min-width: 768px) {
+  .courses .container .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (min-width: 992px) {
   .courses .container .grid {
@@ -1695,14 +1728,9 @@ main {
   border-radius: 5px;
   font-size: 17px;
 }
-.courses .small-sliders {
-  margin: 2rem;
-}
-.courses .small-sliders .center-content {
-  gap: 5px;
-}
-.courses .small-sliders .center-content .btn-gray {
-  width: 5px;
+.courses .container .pagination {
+  margin-top: 3rem;
+  justify-content: center;
 }
 
 .workwithus .container {

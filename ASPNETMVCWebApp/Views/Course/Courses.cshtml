@@ -83,20 +83,36 @@
                     </section>
                 }
             </div>
+            @if (Model.Pagination != null && Model.Pagination.TotalPages > 1)
+            {
+              <div class="pagination">
+                    @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                    {
+                        if (i == Model.Pagination.CurrentPage)
+                        {
+                            <span class="btn btn-gray active">@i</span>
+                        }
+                        else
+                        {
+                            <a class="btn btn-gray" href="@Url.Action("Courses", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
+                        }
+                    }
+                </div>
+            }
         }
-    </div>
-    <div class="small-sliders">
-        <div class="center-content">
-            <a class="btn btn-gray" href=""><</a>
-            <a class="btn btn-gray" href="">1</a>
-            <a class="btn btn-gray" href="">2</a>
-            <a class="btn btn-gray" href="">3</a>
-            <a class="btn btn-gray" href="">4</a>
-            <a class="btn btn-gray" href="">></a>
-        </div>
     </div>
 </section>
 @await Html.PartialAsync("~/Views/Shared/Partials/_WorkWithUsPartial.cshtml")
+@* <div class="small-sliders">
+    <div class="center-content">
+        <a class="btn btn-gray" href=""><</a>
+        <a class="btn btn-gray" href="">1</a>
+        <a class="btn btn-gray" href="">2</a>
+        <a class="btn btn-gray" href="">3</a>
+        <a class="btn btn-gray" href="">4</a>
+        <a class="btn btn-gray" href="">></a>
+    </div>
+</div> *@
 @* <div class="grid">
     @foreach (var course in Model.Courses)
     {

@@ -4,7 +4,30 @@
 }
 
 <section>
+    <div>
+        <img src="~/images/courseimages/image1.svg" />
+    </div>
     <div class="container">
-        <h1>@Model.Title</h1>
+        <div class="detail-headline">
+            <h1>@Model.Title</h1>
+            <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
+        </div>
+        <div class="details-footer">
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <p>(1.2k reviews)</p>
+                <div class="likes">
+                    <p>
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        @($"{Model.LikesInNumbers / 1000:0.#}k")
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

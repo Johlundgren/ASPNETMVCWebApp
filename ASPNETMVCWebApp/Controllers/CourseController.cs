@@ -5,6 +5,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using static System.Net.WebRequestMethods;
@@ -12,10 +13,12 @@ using static System.Net.WebRequestMethods;
 namespace ASPNETMVCWebApp.Controllers;
 
 [Authorize]
-public class CourseController(CategoryService categoryService, CourseService courseService) : Controller
+public class CourseController(CategoryService categoryService, CourseService courseService, IHttpClientFactory httpClientFactory, IConfiguration configuration) : Controller
 {
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
+    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
+    private readonly IConfiguration _configuration = configuration;
 
     public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
@@ -41,42 +44,25 @@ public class CourseController(CategoryService categoryService, CourseService cou
         return View("Unauthorized");
     }
 
-    //public async Task<IActionResult> Details(int id)
-    //{
-    //    if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
-    //    {
-    //        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+    public async Task<IActionResult> Details(int id)
+    {
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
 
-    //        var response = await _http.GetAsync($"https://localhost:7226/api/courses/{id}?key={_configuration["ApiKey:Secret"]}");
-    //        if (response.IsSuccessStatusCode)
-    //        {
-    //            var course = JsonConvert.DeserializeObject<Course>(await response.Content.ReadAsStringAsync());
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-    //            return View(course);
-    //        }
-    //    }
-    //    return View();
-    //}
+
+            var apiKey = _configuration["ApiKey:Secret"];
+            var response = await client.GetAsync($"https://localhost:7226/api/courses/{id}?key={apiKey}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var course = JsonConvert.DeserializeObject<Course>(await response.Content.ReadAsStringAsync());
+
+                return View(course);
+            }
+        }
+        return View("Unauthorized");
+    }
 }
-
-
-//public class CourseController(CategoryService categoryService, CourseService courseService) : Controller
-//{
-//    private readonly CategoryService _categoryService = categoryService;
-//    private readonly CourseService _courseService = courseService;
-
-//    public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
-//    {
-//        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
-//        {
-//            var viewModel = new CourseViewModel
-//            {
-//                Categories = await _categoryService.GetCategoriesAsync(token),
-//                Courses = await _courseService.GetCoursesAsync(token, category, searchQuery),
-
-//            };
-
-//            return View(viewModel);
-//        }
-//        return View("Unauthorized");
-//    }

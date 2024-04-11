@@ -2,17 +2,24 @@
 @{
     ViewData["Title"] = Model.Title;
 }
-
-<section>
-    <div>
-        <img src="~/images/courseimages/image1.svg" />
+@{
+    bool conversionResult = double.TryParse(Model.LikesInNumbers, out double likes);
+    string formattedLikes = conversionResult ? $"{likes / 1000:0.#}k" : "N/A";
+}
+<section class="course-details">
+    <div class="image-container">
+        <img src="~/images/courseimages/image1big.svg" />
     </div>
     <div class="container">
+        @if (Model.IsBestSeller)
+        {
+            <div class="best-seller-badge">Best Seller</div>
+        }
         <div class="detail-headline">
             <h1>@Model.Title</h1>
             <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
         </div>
-        <div class="details-footer">
+        <div class="course-info">
             <div class="stars">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -20,14 +27,95 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
                 <p>(1.2k reviews)</p>
+            </div>
+            <div class="divider"></div>
                 <div class="likes">
                     <p>
                         <i class="fa-solid fa-thumbs-up"></i>
-                        @($"{Model.LikesInNumbers / 1000:0.#}k")
+                        @formattedLikes
                     </p>
+                </div>
+            <div class="divider"></div>
+                <div class="hours">
+                <i class="fa-regular fa-clock"></i> @Model.Hours hours
+                </div>
+        </div>
+        <div class="details-footer">
+            <img src="~/images/selfies/albertflores.svg"/>
+            <div class="author-info">
+                <div class="author">
+                    <p>Created by</p>
+                    <p>@Model.Author</p>
                 </div>
             </div>
         </div>
-
+    </div>
+</section>
+<section class="course-description">
+    <div class="container">
+        <div class="left-section">
+            <div class="description">
+                <h1>Course Description</h1>
+                <p>Suspendisse natoque sagittis, consequat turpis. Sed tristique tellus morbi magna. At vel senectus accumsan, arcu mattis id tempor. Tellus sagittis, euismod porttitor sed tortor est id. Feugiat velit velit, tortor ut. Ut libero cursus nibh lorem urna amet tristique leo. Viverra lorem arcu nam nunc at ipsum quam. A proin id sagittis dignissim mauris condimentum ornare. Tempus mauris sed dictum ultrices.</p>
+            </div>
+            <div class="description-footer">
+                <h2>What you'll learn</h2>
+                <div class="text-container">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Sed lectus donec amet eu turpis interdum.</p>
+                </div>
+                <div class="text-container">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Nulla at consectetur vitae dignissim porttitor.</p>
+                </div>
+                <div class="text-container">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Phasellus id vitae dui aliquet mi.</p>
+                </div>
+                <div class="text-container">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Integer cursus vitae, odio feugiat iaculis aliquet diam, et purus.</p>
+                </div>
+                <div class="text-container">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>In aenean dolor diam tortor orci eu.</p>
+                </div>
+            </div>
+        </div>
+        <div class="course-include">
+            <h4>This course includes:</h4>
+            <div class="include-container">
+                <i class="fa-solid fa-display"></i>
+                <p>@Model.Hours hours on-demand video</p>
+            </div>
+            <div class="include-container">
+                <i class="fa-light fa-file-invoice"></i>
+                <p>18 articles</p>
+            </div>
+            <div class="include-container">
+                <i class="fa-sharp fa-light fa-download"></i>
+                <p>25 downloadable resources</p>
+            </div>
+            <div class="include-container">
+                <i class="fa-light fa-infinity"></i>
+                <p>Full lifetime access</p>
+            </div>
+            <div class="include-container">
+                <i class="fa-light fa-trophy"></i>
+                <p>Certificate of completion</p>
+            </div>
+            <div class="price-container">
+                @if (!string.IsNullOrEmpty(Model.DiscountPrice) && Model.DiscountPrice != "0")
+                {
+                    <p class="discount-price">$@Model.DiscountPrice</p>
+                    <p class="original-price crossed">$@Model.Price</p>
+                }
+                else
+                {
+                    <p class="price">$@Model.Price</p>
+                }
+            </div>
+            <button class="btn btn-theme">Join Course</button>
+        </div>
     </div>
 </section>

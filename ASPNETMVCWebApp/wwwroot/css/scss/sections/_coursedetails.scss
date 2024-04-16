@@ -32,7 +32,7 @@
         .detail-headline {
 
             h1 {
-                color: var(--color-gray-900);
+                color: var(--color-white);
                 transform: translateY(75px);
             }
 
@@ -43,14 +43,22 @@
         }
 
         .course-info {
-            display: flex;
+            @include md {
+                display: flex;
+            }
+
             gap: 50px;
             margin-top: 10rem;
 
             .divider {
-                height: 20px;
-                width: 1px;
-                background-color: var(--color-gray-200);
+                display: none;
+
+                @include md {
+                    height: 20px;
+                    width: 1px;
+                    background-color: var(--color-gray-200);
+                    display: block;
+                }
             }
 
             .stars {
@@ -76,9 +84,13 @@
         }
 
         .details-footer {
-            display: flex;
+            @include md {
+                display: flex;
+                margin-top: 170px;
+            }
+
             align-items: center;
-            margin-top: 170px;
+
 
             img {
                 margin-right: 1rem;
@@ -95,10 +107,17 @@
     }
 }
 .course-description {
-    margin-top: 200px;
+    margin-top: 50px;
+
+    @include md {
+        margin-top: 200px;
+    }
 
     .container {
-        display: flex;
+        @include md {
+            display: flex;
+        }
+
         gap: 20px;
 
         .left-section {
@@ -106,15 +125,20 @@
 
             .description {
                 h1 {
+                    color: var(--color-gray-900);
                 }
 
                 p {
                     width: 50%;
+                    color: var(--color-gray-700);
                 }
             }
 
             .description-footer {
+                margin-top: 50px;
+
                 h2 {
+                    color: var(--color-gray-900);
                 }
 
                 .text-container {
@@ -125,9 +149,11 @@
                     i {
                         margin-bottom: 15px;
                         font-size: 20px;
+                        color: var(--color-theme);
                     }
 
                     p {
+                        color: var(--color-gray-700);
                     }
                 }
             }
@@ -140,7 +166,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             height: 70%;
 
+            h4 {
+                color: var(--color-gray-900);
+            }
+
             h1 {
+                color: var(--color-gray-900);
             }
 
             .include-container {
@@ -151,20 +182,35 @@
                 i {
                     margin-bottom: 15px;
                     font-size: 20px;
+                    color: var(--color-gray-700);
                 }
 
                 p {
+                    color: var(--color-gray-600);
                 }
             }
 
             .price-container {
+                display: flex;
+                gap: 20px;
+
                 .discount-price {
+                    color: var(--color-gray-900);
+                    font-size: 30px;
+                    font-weight: 700;
                 }
 
                 .original-price {
                 }
 
                 .price {
+                    color: var(--color-gray-900);
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+
+                .crossed {
+                    text-decoration: line-through;
                 }
             }
         }

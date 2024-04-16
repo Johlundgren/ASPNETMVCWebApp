@@ -1,0 +1,89 @@
+.author-container {
+    margin-top: 75px;
+
+    .container {
+        @include xl {
+            display: flex;
+        }
+
+        .image-container {
+            img {
+                @include lg {
+                    width: auto;
+                    height: auto;
+                }
+
+                width: auto;
+                height: 30%;
+            }
+        }
+
+        .author-info {
+            background-color: black;
+            align-items: center;
+
+            .author {
+                margin-left: 150px;
+
+                .small-headline {
+                    margin-top: 6rem;
+                    font-size: 20px;
+                }
+
+                h1 {
+                    color: var(--color-white);
+                }
+
+                p {
+                    color: var(--color-gray-400);
+                    width: 80%;
+                }
+
+                .social-buttons {
+                    margin-top: 20px;
+
+                    button {
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        font-size: 16px;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        font-weight: bold;
+                        border-radius: 10px;
+
+                        i {
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .youtube {
+                        background-color: #FF0000;
+
+                        &:hover {
+                            background-color: darken(#FF0000, 10%);
+                        }
+                    }
+
+                    .facebook {
+                        background-color: #3B5998;
+                        margin-top: 5px;
+                        @include xl {
+                            
+                            margin-left: 20px;
+                        }
+
+                        @include xxl {
+                            margin-left: 20px;
+                        }
+
+                        &:hover {
+                            background-color: darken(#3B5998, 10%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

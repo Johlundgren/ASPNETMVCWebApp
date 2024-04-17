@@ -1,15 +1,20 @@
 .contact {
     background-color: var(--color-gray-100);
+    position: relative;
 
     h1 {
         margin-top: 50px;
         color: var(--color-gray-900);
-        margin-left: 20rem;
+
+        @include lg {
+            margin-left: 20rem;
+        }
     }
 
     .container {
-        display: flex;
-
+        @include lg {
+            display: flex;
+        }
 
         .email-box {
             display: flex;
@@ -34,6 +39,8 @@
             }
 
             .content {
+                padding-bottom: 40px;
+
                 h4 {
                     color: var(--color-gray-900);
                 }
@@ -51,10 +58,26 @@
         }
 
         .contact-page {
-            width: 50%;
+            right: 200px;
+            top: 0px;
+            z-index: 0;
+            margin-top: 20px;
+
+            @include xl {
+                z-index: 2;
+                position: absolute;
+                margin-top: 20px;
+                right: 350px;
+            }
+
+
+            h1 {
+                margin-left: 5px;
+                color: var(--color-gray-900);
+            }
 
             .form-container {
-                background-color: #f8f9fa;
+                background-color: var(--color-gray-000);
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,10 +88,12 @@
                     .form-group {
                         margin-bottom: 15px;
 
+
                         label {
                             display: block;
                             font-weight: bold;
                             margin-bottom: 5px;
+                            color: var(--color-gray-900);
                         }
 
                         input[type="text"],
@@ -79,27 +104,20 @@
                             padding: 8px;
                             border: 1px solid #ccc;
                             border-radius: 4px;
+                            background-color: var(--color-gray-000);
+                            color: var(--color-gray-900);
 
                             &:focus {
-                                border-color: #80bdff;
+                                border-color: var(--color-gray-900);
                                 outline: none;
                                 box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
                             }
                         }
 
+
                         span.text-danger {
                             color: #dc3545;
                             font-size: 0.875em;
-                        }
-                    }
-
-                    .btn-primary {
-                        background-color: #007bff;
-                        border-color: #007bff;
-
-                        &:hover {
-                            background-color: #0056b3;
-                            border-color: #0056b3;
                         }
                     }
                 }
@@ -125,5 +143,11 @@
                 }
             }
         }
+    }
+
+    img {
+        z-index: 0;
+        width: 100%;
+        height: auto;
     }
 }

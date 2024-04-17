@@ -2097,14 +2097,21 @@ main {
 
 .contact {
   background-color: var(--color-gray-100);
+  position: relative;
 }
 .contact h1 {
   margin-top: 50px;
   color: var(--color-gray-900);
-  margin-left: 20rem;
 }
-.contact .container {
-  display: flex;
+@media (min-width: 992px) {
+  .contact h1 {
+    margin-left: 20rem;
+  }
+}
+@media (min-width: 992px) {
+  .contact .container {
+    display: flex;
+  }
 }
 .contact .container .email-box {
   display: flex;
@@ -2126,6 +2133,9 @@ main {
   font-size: 30px;
   color: #6366F1;
 }
+.contact .container .email-box .content {
+  padding-bottom: 40px;
+}
 .contact .container .email-box .content h4 {
   color: var(--color-gray-900);
 }
@@ -2138,10 +2148,25 @@ main {
   font-weight: 700;
 }
 .contact .container .contact-page {
-  width: 50%;
+  right: 200px;
+  top: 0px;
+  z-index: 0;
+  margin-top: 20px;
+}
+@media (min-width: 1200px) {
+  .contact .container .contact-page {
+    z-index: 2;
+    position: absolute;
+    margin-top: 20px;
+    right: 350px;
+  }
+}
+.contact .container .contact-page h1 {
+  margin-left: 5px;
+  color: var(--color-gray-900);
 }
 .contact .container .contact-page .form-container {
-  background-color: #f8f9fa;
+  background-color: var(--color-gray-000);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -2156,6 +2181,7 @@ main {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--color-gray-900);
 }
 .contact .container .contact-page .form-container form .form-group input[type=text],
 .contact .container .contact-page .form-container form .form-group input[type=email],
@@ -2165,26 +2191,20 @@ main {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
 .contact .container .contact-page .form-container form .form-group input[type=text]:focus,
 .contact .container .contact-page .form-container form .form-group input[type=email]:focus,
 .contact .container .contact-page .form-container form .form-group select:focus,
 .contact .container .contact-page .form-container form .form-group textarea:focus {
-  border-color: #80bdff;
+  border-color: var(--color-gray-900);
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .contact .container .contact-page .form-container form .form-group span.text-danger {
   color: #dc3545;
   font-size: 0.875em;
-}
-.contact .container .contact-page .form-container form .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-.contact .container .contact-page .form-container form .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
 }
 .contact .container .contact-page .message {
   padding: 10px;
@@ -2202,4 +2222,9 @@ main {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
+}
+.contact img {
+  z-index: 0;
+  width: 100%;
+  height: auto;
 }

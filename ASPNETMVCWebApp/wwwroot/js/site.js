@@ -80,3 +80,10 @@ function updateCoursesByFilters() {
             document.querySelector('.pagination').innerHTML = pagination
         })
 }
+
+window.onload = function () {
+    var successMessage = '@successMessage';
+    if (successMessage) {
+        document.getElementById('contactForm').reset();
+    }
+}

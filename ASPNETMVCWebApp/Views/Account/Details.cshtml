@@ -20,8 +20,13 @@
             </div>
 
             <nav>
-                <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
-                <a class="btn-gray" asp-controller="Account" asp-action="SignOut">Sign out</a>
+                <a class="btn-gray @(ViewContext.RouteData.Values["action"].ToString() == "Details" && ViewContext.RouteData.Values["controller"].ToString() == "Account" ? "active" : "")"
+                   asp-controller="Account" asp-action="Details">
+                    <i class="fa-regular fa-gear"></i> Account Details
+                </a>
+                <a class="btn-gray" asp-controller="Account" asp-action="SecurityIndex"><i class="fa-regular fa-lock"></i> Security</a>
+                <a class="btn-gray" asp-controller="Account" asp-action="Saved"><i class="fa-regular fa-bookmark"></i> Saved Courses</a>
+                <a class="btn-gray" asp-controller="Account" asp-action="SignOut"><i class="fa-regular fa-right-from-bracket"></i> Sign out</a>
             </nav>
         </aside>
 

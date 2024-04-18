@@ -303,6 +303,25 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     }
     #endregion
 
+
+    #region Account Security
+    [Authorize]
+    [HttpGet]
+    [Route("account/security")]
+    public async Task<IActionResult> SecurityIndex()
+    {
+        var viewModel = new SecurityViewModel
+        {
+            ProfileInfo = await PopulateProfileInfoAsync()
+        };
+
+
+        return View(viewModel);
+    }
+
+    #endregion
+
+
     [Authorize]
     private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
     {

@@ -550,6 +550,12 @@ form span.field-validation-error::after {
   color: #33354D;
 }
 
+.active {
+  color: var(--color-white);
+  font-weight: bold;
+  background-color: #6366F1;
+}
+
 header {
   padding: 15px 0;
   position: relative;
@@ -2227,4 +2233,98 @@ main {
   z-index: 0;
   width: 100%;
   height: auto;
+}
+
+.security-details {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 150px;
+  margin-bottom: 70px;
+}
+.security-details aside {
+  border-right: 1px solid var(--color-gray-300);
+  padding-right: 20px;
+}
+.security-details aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+.security-details aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: var(--color-gray-900);
+}
+.security-details aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+  color: var(--color-gray-600);
+}
+.security-details aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+.security-details aside nav a {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+.security-details aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+}
+.security-details .security-change {
+  display: grid;
+  gap: 1rem 2rem;
+  padding: 20px;
+  border-radius: 8px;
+}
+.security-details .security-change h2 {
+  color: var(--color-gray-900);
+  margin-bottom: 15px;
+}
+.security-details .security-change h5 {
+  color: var(--color-theme);
+}
+.security-details .security-change form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 50%;
+}
+.security-details .security-change form .form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.security-details .security-change form .form-group input[type=password] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.security-details .security-change form .form-group input[type=password]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.security-details .security-change form .new-password-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.security-details .security-change form .new-password-group .form-group {
+  flex: 1;
+}
+.security-details .security-change form .new-password-group .form-group:first-child {
+  margin-right: 20px;
+}
+.security-details .security-change form .btn-submit {
+  display: flex;
+  gap: 15px;
+  width: 40%;
+}
+.security-details .security-change form .btn-submit button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
 }

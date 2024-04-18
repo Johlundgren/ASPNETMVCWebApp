@@ -19,3 +19,9 @@
     border-color: $warning;
     color: $gray-800;
 }
+
+.active {
+    color: var(--color-white);
+    font-weight: bold;
+    background-color: $theme;
+}

@@ -1,0 +1,111 @@
+.security-details {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+
+    aside {
+        border-right: 1px solid var(--color-gray-300);
+        padding-right: 20px;
+
+        .profile-info {
+            margin: 20px;
+            text-align: center;
+
+
+            h5 {
+                margin-top: 15px;
+                margin-bottom: 0;
+                color: var(--color-gray-900);
+            }
+
+            p {
+                @include text-m;
+                color: var(--color-gray-600);
+            }
+        }
+
+        nav {
+            margin-top: 50px;
+            text-align: left;
+
+            a {
+                margin: 10px 0;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .btn-theme-s {
+                text-align: left;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    .security-change {
+        display: grid;
+        gap: 1rem 2rem;
+        padding: 20px;
+        border-radius: 8px;
+
+        h2 {
+            color: var(--color-gray-900);
+            margin-bottom: 15px;
+        }
+
+        h5 {
+            color: var(--color-theme);
+        }
+
+        form {
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                width: 50%;
+
+                label {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+                input[type="password"] {
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+
+                    &:focus {
+                        border-color: #007bff;
+                        box-shadow: 0 0 5px rgba(0,123,255,0.5);
+                    }
+                }
+            }
+
+            .new-password-group {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .form-group {
+                    flex: 1;
+
+                    &:first-child {
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            .btn-submit {
+                display: flex;
+                gap: 15px;
+                width: 40%;
+
+                button {
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}

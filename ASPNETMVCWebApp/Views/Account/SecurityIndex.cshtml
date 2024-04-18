@@ -1,0 +1,49 @@
+﻿@model SecurityViewModel
+
+<div class="container">
+    <section class="security-details">
+        <aside>
+            <div class="profile-info">
+                <img src="~/images/@Model.ProfileInfo?.ProfileImageUrl" alt="" />
+                <h5>@Model.ProfileInfo?.FirstName @Model.ProfileInfo?.LastName</h5>
+                <p>@Model.ProfileInfo?.Email</p>
+            </div>
+
+            <nav>
+                <a class="btn-gray" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i> Account Details</a>
+                <a class="btn-gray @(ViewContext.RouteData.Values["action"].ToString() == "SecurityIndex" && ViewContext.RouteData.Values["controller"].ToString() == "Account" ? "active" : "")"
+                   asp-controller="Account"
+                   asp-action="SecurityIndex">
+                    <i class="fa-regular fa-lock"></i> Security
+                </a>
+                <a class="btn-gray" asp-controller="Account" asp-action="Saved"><i class="fa-regular fa-bookmark"></i> Saved Courses</a>
+                <a class="btn-gray" asp-controller="Account" asp-action="SignOut"><i class="fa-regular fa-right-from-bracket"></i> Sign out</a>
+            </nav>
+        </aside>
+        <div class="security-change">
+            <h2>Security</h2>
+            <h5>Password</h5>
+            <form asp-action="Security" method="post">
+                <div class="form-group">
+                    <label for="CurrentPassword">Current Password</label>
+                    <input asp-for="CurrentPassword" type="password" class="form-control" />
+                </div>
+                <div class="new-password-group">
+                    <div class="form-group">
+                        <label for="NewPassword">New Password</label>
+                        <input asp-for="NewPassword" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ConfirmNewPassword">Confirm New Password</label>
+                        <input asp-for="ConfirmNewPassword" type="password" class="form-control" />
+                    </div>
+                </div>
+                <div class="btn-submit">
+                    <button class="btn btn-gray" type="reset">Cancel</button>
+                    <button class="btn btn-theme" type="submit">Change Password</button>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</div>

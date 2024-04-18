@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 
@@ -319,7 +321,41 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         return View(viewModel);
     }
 
+
+
     #endregion
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> ChangePassword(SecurityViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            throw new ApplicationException("Unable to load user.");
+        }
+
+        var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+        if (!changePasswordResult.Succeeded)
+        {
+            foreach (var error in changePasswordResult.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return View(model);
+        }
+
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("SignIn");
+    }
+
+
+
 
 
     [Authorize]

@@ -23,19 +23,22 @@
         <div class="security-change">
             <h2>Security</h2>
             <h5>Password</h5>
-            <form asp-action="Security" method="post">
+            <form asp-action="ChangePassword" method="post">
                 <div class="form-group">
                     <label for="CurrentPassword">Current Password</label>
                     <input asp-for="CurrentPassword" type="password" class="form-control" />
+                    <span asp-validation-for="CurrentPassword" class="text-danger"></span>
                 </div>
                 <div class="new-password-group">
                     <div class="form-group">
                         <label for="NewPassword">New Password</label>
                         <input asp-for="NewPassword" type="password" class="form-control" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="ConfirmNewPassword">Confirm New Password</label>
                         <input asp-for="ConfirmNewPassword" type="password" class="form-control" />
+                        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="btn-submit">

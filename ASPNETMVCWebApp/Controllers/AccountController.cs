@@ -11,6 +11,7 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
+using Infrastructure.Models;
 
 namespace ASPNETMVCWebApp.Controllers;
 
@@ -196,9 +197,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
 
     #endregion
 
-
-    [Authorize]
     #region DetailsGet
+    [Authorize]
     [HttpGet]
     [Route("/account/details")]
     public async Task<IActionResult> Details()
@@ -323,7 +323,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
 
 
 
-    #endregion
+
 
     [HttpPost]
     [Authorize]
@@ -353,6 +353,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         await _signInManager.SignOutAsync();
         return RedirectToAction("SignIn");
     }
+    #endregion
 
 
 

@@ -17,4 +17,6 @@ public class UserEntity : IdentityUser
 
 
     public bool IsExternalAccount { get; set; } = false;
+
+    public ICollection<SavedCourseEntity> SavedCourses { get; set; } = [];
 }

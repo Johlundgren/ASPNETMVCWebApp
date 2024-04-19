@@ -1,0 +1,26 @@
+﻿@model SavedCoursesViewModel
+@{
+    ViewData["Title"] = "Saved Courses";
+}
+
+<h1>Saved Courses</h1>
+
+<div>
+    @if (Model.SavedCourses.Count == 0)
+    {
+        <p>You have no saved courses.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var course in Model.SavedCourses)
+            {
+                <li>
+                    <h3>@course.Title</h3>
+                    <p>@course.Author</p>
+                    <p>Price: @course.Price</p>
+                </li>
+            }
+        </ul>
+    }
+</div>

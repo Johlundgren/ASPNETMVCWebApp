@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Models;
+﻿using Infrastructure.Entities;
+
+namespace Infrastructure.Models;
 
 public class Course
 {
@@ -14,4 +16,6 @@ public class Course
     public string? ImageUrl { get; set; }
     public string? BigImageUrl { get; set; }
     public string? Category { get; set; }
+
+    public ICollection<SavedCourseEntity> SavedCourses { get; set; } = new List<SavedCourseEntity>();
 }

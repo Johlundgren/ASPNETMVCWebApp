@@ -1,13 +1,17 @@
 ﻿using ASPNETMVCWebApp.ViewModels;
 using Azure;
+using Infrastructure.Contexts;
+using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using static System.Net.WebRequestMethods;
 
 namespace ASPNETMVCWebApp.Controllers;
@@ -19,6 +23,8 @@ public class CourseController(CategoryService categoryService, CourseService cou
     private readonly CourseService _courseService = courseService;
     private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
     private readonly IConfiguration _configuration = configuration;
+    private readonly UserManager<UserEntity> _userManager;
+    private readonly AppDbContext _context;
 
     public async Task<IActionResult> Courses(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
@@ -62,6 +68,47 @@ public class CourseController(CategoryService categoryService, CourseService cou
 
                 return View(course);
             }
+        }
+        return View("Unauthorized");
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> SaveCourse(int courseId)
+    {
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
+            bool result = await _courseService.SaveCourse(User.Identity.Name, courseId, token);
+
+            if (result)
+            {
+                TempData["SuccessMessage"] = "Course saved successfully.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to save the course.";
+                return View("Error404");
+            }
+        }
+        return View("Unauthorized");
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> SavedCourses()
+    {
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var savedCourses = await _courseService.GetSavedCourses(userId, token);
+
+            var viewModel = new SavedCoursesViewModel
+            {
+                SavedCourses = savedCourses
+            };
+
+            return View(viewModel);
         }
         return View("Unauthorized");
     }
